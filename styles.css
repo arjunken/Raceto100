@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
+
+#players-name-input {
+  background-color:azure; 
+  width: 100%;
+  margin: auto;
+  padding: 10px;
+}
+
+body {
+  background-color:#232931;
+  background-image: url('./gifs/stars.gif');
+  background-repeat: repeat;
+}
+
+h1 {
+  margin: 30px;
+  font-family: 'Lobster', cursive;
+  text-shadow: 5px 0 #232931;
+  font-size: 7rem;
+  color: #4ECCA3;
+  text-align: center;
+}
+
+#player1-card, #player2-card {
+ font-weight: 600;
+ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.player1-pointer, .player2-pointer{
+  color: bisque;
+}
+
+.dice-results-p1, .dice-results-p2{ 
+  z-index: 1; 
+  background-color: burlywood;
+  opacity: 50%; 
+  padding: 10px;
+  text-align: center;
+  }
+
+ #dice-p1, #dice-p2{
+ width: 12%;
+ height: auto;
+ }
+
+  #score-p1, #score-p2{
+    width: auto;
+    height: 40px;
+   background-color: #4ECCA3;
+   border-radius: 35%;
+   display: flex;
+   justify-content: center;
+  align-items: center;
+  padding: 5px;
+  }
+
+  .chp1 img, .chp2 img{
+    width: 6%;
+  }
+
+  .winner-display{
+    background-image: url('./gifs/sparkles.gif');    
+    width:100%;
+    height:100%;
+    display: flex;  
+    flex-direction: column;
+   justify-content: center;
+  align-items: center;
+  padding: 100px;
+  font-size: 3rem;
+  color: white;    
+  }  
+
+  .winner-display span{
+    font-family: 'Bungee Shade', cursive;
+  }
+
+  .dancer1{
+    position: absolute;
+    right: 300px;
+    top: 0px;  
+    z-index: 2;
+    width: 70%; 
+  }
+
+  .dancer2{
+    position: absolute;
+    left: 300px;   
+    z-index: 2; 
+    width: 70%;    
+  }
+
+/* @media (min-width: 1200px) { 
+
+  #players-name-input {  
+    width: 40%;     
+  }
+
+ } */
+
+footer {
+  margin-top: 5%;
+  color: #EEEEEE;
+  text-align: center;
+  background-color: #232931;
+  position:fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
