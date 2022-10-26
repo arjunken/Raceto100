@@ -25,8 +25,8 @@ const diceResultAudio = document.getElementById("dice-result-audio");
 const diceWinnerAudio = document.getElementById("dice-winner-audio");
 const dancer1 = document.querySelector(".dancer1");
 const dancer2 = document.querySelector(".dancer2");
-const TARGET = 20;
-const DANCEGIFS = 12;
+const TARGET = 5;
+const DANCEGIFS = 15;
 let playerOne = "Player 1";
 let playerTwo = "Player 2";
 
@@ -38,6 +38,17 @@ if (storedCurrentPlayers) {
   playerOne = storedCurrentPlayers[0];
   playerTwo = storedCurrentPlayers[1];
 }
+
+//Get players Index
+let storedPlayersData = JSON.parse(
+  localStorage.getItem("playersDataRaceto100")
+);
+let p1Index = storedPlayersData.players.findIndex((name) => {
+  return name === playerOne;
+});
+let p2Index = storedPlayersData.players.findIndex((name) => {
+  return name === playerTwo;
+});
 
 //******GAME SESSION CODE ******
 //Display game container
@@ -109,6 +120,19 @@ rollBtn1.addEventListener("click", (e) => {
         "src",
         `./gifs/dance${Math.floor(Math.random() * DANCEGIFS + 1)}.gif`
       );
+
+      if (p1Index >= 0 && p2Index >= 0) {
+        storedPlayersData.playersData[p1Index].gamesPlayed += 1;
+        storedPlayersData.playersData[p2Index].gamesPlayed += 1;
+        storedPlayersData.playersData[p1Index].gamesWon += 1;
+        storedPlayersData.playersData[p1Index].totalScore +=
+          player1Score + randomNumber;
+        storedPlayersData.playersData[p2Index].totalScore += player2Score;
+        localStorage.setItem(
+          "playersDataRaceto100",
+          JSON.stringify(storedPlayersData)
+        );
+      }
     } else {
       diceResultsP1.classList.remove("d-none");
       setTimeout(() => {
@@ -188,6 +212,19 @@ rollBtn2.addEventListener("click", (e) => {
         "src",
         `./gifs/dance${Math.floor(Math.random() * DANCEGIFS + 1)}.gif`
       );
+
+      if (p1Index >= 0 && p2Index >= 0) {
+        storedPlayersData.playersData[p2Index].gamesPlayed += 1;
+        storedPlayersData.playersData[p1Index].gamesPlayed += 1;
+        storedPlayersData.playersData[p2Index].gamesWon += 1;
+        storedPlayersData.playersData[p2Index].totalScore +=
+          player2Score + randomNumber;
+        storedPlayersData.playersData[p1Index].totalScore += player2Score;
+        localStorage.setItem(
+          "playersDataRaceto100",
+          JSON.stringify(storedPlayersData)
+        );
+      }
     } else {
       diceResultsP2.classList.remove("d-none");
       setTimeout(() => {

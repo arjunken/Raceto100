@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
 
-#players-name-input {
+#userInputs {
   background-color:azure; 
-  width: 100%;
+  padding: 10px; 
+  width: 40%;
   margin: auto;
-  padding: 10px;
-}
+} 
 
 body {
   background-color:#232931;
@@ -91,13 +91,14 @@ h1 {
     width: 70%;    
   }
 
-/* @media (min-width: 1200px) { 
+@media (max-width: 600px) { 
 
-  #players-name-input {  
-    width: 40%;     
-  }
+  #userInputs {  
+  width: 100%;
 
- } */
+} 
+
+ } 
 
 footer {
   margin-top: 5%;

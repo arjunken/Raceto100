@@ -27,50 +27,51 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="container position-relative">
       <h1 class="display-1">Raceto100</h1>
       <!-- Players Input -->
-      <div class="shadow-lg rounded-1" id="players-name-input">
-        <form id="userInputs">
-          <div class="form-row">
-            <div class="col-md-12">
-              <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                  <div class="input-group-text rounded-0">Player 1</div>
-                </div>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="p1input"
-                  placeholder="Name"
-                />
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="input-group mb-4">
-                <div class="input-group-prepend">
-                  <div class="input-group-text rounded-0">Player 2</div>
-                </div>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="p2input"
-                  placeholder="Name"
-                />
-              </div>
-            </div>
-            <div class="col-md-12 text-center">
-              <button
-                type="submit"
-                class="btn btn-primary mb-2"
-                id="btnDataFromUser"
-              >
-                Let's go!
-              </button>
-            </div>
+
+      <form
+        id="userInputs"
+        class="shadow-lg rounded-1 d-flex flex-column align-items-center"
+      >
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text rounded-0">Player 1</div>
           </div>
-        </form>
-      </div>
+          <input
+            type="text"
+            class="form-control"
+            name="p1input"
+            placeholder="Name"
+            onClick="this.select()"
+            autofocus
+          />
+        </div>
+
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <div class="input-group-text rounded-0">Player 2</div>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            name="p2input"
+            placeholder="Name"
+            onClick="this.select()"
+          />
+        </div>
+
+        <div class="col-12 text-center">
+          <button
+            type="submit"
+            class="btn btn-primary mb-2"
+            id="btnDataFromUser"
+          >
+            Let's go!
+          </button>
+        </div>
+      </form>
     </div>
 
     <script src="./index.js"></script>

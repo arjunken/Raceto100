@@ -39,6 +39,7 @@ submit.addEventListener("click", (e) => {
       //Update the first player
       if (!nameCheckP1) {
         const newPlayer = {
+          id: storedPlayersData.players.length,
           name: form.p1input.value,
           gamesPlayed: 0,
           gamesWon: 0,
@@ -58,6 +59,7 @@ submit.addEventListener("click", (e) => {
       //Update the second player
       if (!nameCheckP2) {
         const newPlayer = {
+          id: storedPlayersData.players.length,
           name: form.p2input.value,
           gamesPlayed: 0,
           gamesWon: 0,
@@ -80,12 +82,14 @@ submit.addEventListener("click", (e) => {
         players: [form.p1input.value, form.p2input.value],
         playersData: [
           {
+            id: 0,
             name: form.p1input.value,
             gamesPlayed: 0,
             gamesWon: 0,
             totalScore: 0,
           },
           {
+            id: 1,
             name: form.p2input.value,
             gamesPlayed: 0,
             gamesWon: 0,
