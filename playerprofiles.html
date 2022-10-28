@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Dicee</title>
+    <script
+      src="https://kit.fontawesome.com/86da273acb.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster"
+      rel="stylesheet"
+    />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div
+      class="container d-flex flex-column justify-content-center align-items-center"
+    >
+      <h1 class="display-1">Raceto100</h1>
+      
+      <!-- Profile Container -->
+      <div
+        class="container d-flex flex-column flex-md-row gap-3 justify-content-center align-items-top"
+      >
+        <div class="profileDetails bg-light text-center rounded-2 d-flex flex-column align-items-center">
+          <img src="./avatars/avatar2.jpg" alt="" class="player-in-edit m-2 w-75 rounded-pill" />
+          <select class="form-select m-2 w-75" aria-label="player-selection" id="player-selection">
+          </select>  
+          <div class="d-inline-flex align-items-center flex-row gap-2 w-75">              
+            <label for="playerName">Name: </label>                      
+            <input type="text" class="form-control" name="playerName" id="playerName" placeholder="Enter new name">
+          </div> 
+           <div class="d-flex flex-row justify-content-center gap-2">                  
+            <button type="submit" id="saveprofile-btn" class="btn btn-primary my-3 d-block">Save Profile</button>
+            <button type="submit" id="saveprofile-btn" class="btn btn-primary my-3 d-block">Cancel</button>
+          </div> 
+        </div>       
+
+        </form>
+        <div class="avatarListContainer bg-light rounded-2 d-flex flex-column">
+          <h6 class="m-4 text-center"> Choose your avatar</h6>
+          <div class="avatarList mx-4 d-flex flex-row flex-wrap justify-content-between"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <script src="./playerprofile.js"></script>
+  </body>
+
+  <footer><p class="text-muted primary">Footer Text Goes here</p></footer>
+</html>

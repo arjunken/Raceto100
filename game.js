@@ -4,6 +4,8 @@ const p1Score = document.querySelector("#score-p1");
 const p2Score = document.querySelector("#score-p2");
 const p1CardTitle = document.querySelector("#player1-card");
 const p2CardTitle = document.querySelector("#player2-card");
+const p1ProfilePic = document.querySelector(".p1-profile-pic");
+const p2ProfilePic = document.querySelector(".p2-profile-pic");
 const chp1 = document.querySelector(".chp1");
 const chp2 = document.querySelector(".chp2");
 const rollBtn1 = document.querySelector("#btn-roll-p1");
@@ -14,35 +16,33 @@ const diceImageP1 = document.querySelector("#dice-p1");
 const diceImageP2 = document.querySelector("#dice-p2");
 const diceResultsP1 = document.querySelector(".dice-results-p1");
 const diceResultsP2 = document.querySelector(".dice-results-p2");
-const emojiP1 = document.querySelector(".chp1 img");
-const emojiP2 = document.querySelector(".chp2 img");
+const emojiP1 = document.querySelector("#p1emoji");
+const emojiP2 = document.querySelector("#p2emoji");
 const winnerDisplayBox = document.querySelector(".winner-display");
 const winnerDisplayName = document.querySelector(".winner-display span");
+const afterGameNav = document.querySelector(".after-game-nav");
 const scoreboardBtn = document.querySelector("#scoreboard-btn");
 const playagainBtn = document.querySelector("#playagain-btn");
+const newGameBtn = document.querySelector("#newgame-btn");
+const editProfileBtn = document.querySelector("#editprofile-btn");
 const diceRollAudio = document.getElementById("dice-roll-audio");
 const diceResultAudio = document.getElementById("dice-result-audio");
 const diceWinnerAudio = document.getElementById("dice-winner-audio");
 const dancer1 = document.querySelector(".dancer1");
 const dancer2 = document.querySelector(".dancer2");
-const TARGET = 5;
+const TARGET = 3;
 const DANCEGIFS = 15;
 let playerOne = "Player 1";
 let playerTwo = "Player 2";
 
 //Get the current player names
-let storedCurrentPlayers = JSON.parse(
-  localStorage.getItem("recentPlayersRaceto100")
-);
-if (storedCurrentPlayers) {
-  playerOne = storedCurrentPlayers[0];
-  playerTwo = storedCurrentPlayers[1];
-}
-
-//Get players Index
 let storedPlayersData = JSON.parse(
   localStorage.getItem("playersDataRaceto100")
 );
+
+playerOne = storedPlayersData.recentPlayers[0];
+playerTwo = storedPlayersData.recentPlayers[1];
+
 let p1Index = storedPlayersData.players.findIndex((name) => {
   return name === playerOne;
 });
@@ -57,6 +57,11 @@ p1CardTitle.innerHTML = playerOne;
 p2CardTitle.innerHTML = playerTwo;
 let player1Score = 0;
 let player2Score = 0;
+
+//Display relevant profile pics
+console.log(p2Index);
+p1ProfilePic.src = storedPlayersData.playersData[p1Index].avatar;
+p2ProfilePic.src = storedPlayersData.playersData[p2Index].avatar;
 
 //When Player One clicks the roll button
 
@@ -111,6 +116,7 @@ rollBtn1.addEventListener("click", (e) => {
       winnerAudioSource.setAttribute("type", "audio/wav");
       diceWinnerAudio.append(winnerAudioSource);
       diceWinnerAudio.play();
+      afterGameNav.classList.remove("d-none");
       winnerDisplayName.innerHTML = `${playerOne} Wins!`;
       dancer1.setAttribute(
         "src",
@@ -203,6 +209,7 @@ rollBtn2.addEventListener("click", (e) => {
       winnerAudioSource.setAttribute("type", "audio/wav");
       diceWinnerAudio.append(winnerAudioSource);
       diceWinnerAudio.play();
+      afterGameNav.classList.remove("d-none");
       winnerDisplayName.innerHTML = `${playerTwo} Wins!`;
       dancer1.setAttribute(
         "src",
@@ -249,6 +256,14 @@ playagainBtn.addEventListener("click", () => {
 
 scoreboardBtn.addEventListener("click", () => {
   location.assign("/scoreboard.html");
+});
+
+newGameBtn.addEventListener("click", () => {
+  location.assign("/index.html");
+});
+
+editProfileBtn.addEventListener("click", () => {
+  location.assign("/playerprofiles.html");
 });
 
 //******END OF GAME SESSION CODE ******

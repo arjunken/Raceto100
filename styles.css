@@ -55,9 +55,12 @@ h1 {
   padding: 5px;
   }
 
-  .chp1 img, .chp2 img{
+  #p1emoji, #p2emoji{
     width: 6%;
+    cursor: pointer;    
   }
+
+  
 
   .winner-display{
     background-image: url('./gifs/sparkles.gif');    
@@ -79,24 +82,59 @@ h1 {
   .dancer1{
     position: absolute;
     right: 300px;
-    top: 0px;  
+    top: 200px;  
     z-index: 2;
-    width: 70%; 
+    width: 30%; 
   }
 
   .dancer2{
     position: absolute;
-    left: 300px;   
+    left: 300px; 
+    top:200px;  
     z-index: 2; 
-    width: 70%;    
+    width: 30%;    
   }
 
-@media (max-width: 600px) { 
+.avtr-img {
+  width: 15%;
+  height: auto;
+  cursor: pointer;
+  margin: 20px;
+  border: #232931 solid;
+  box-shadow: 5px 10px;
+}
+
+.profileDetails{
+  width: 30%;
+}
+
+.avtr-img:hover{
+  opacity: 20%;
+}
+
+.avatarListContainer{
+  height: 600px;
+  overflow: scroll;
+  scroll-behavior: smooth;
+  width: 60%;
+}
+
+@media (max-width: 760px) { 
 
   #userInputs {  
   width: 100%;
-
 } 
+
+.profileDetails{
+  width: 100%;
+}
+
+.avatarListContainer{
+  height: 1000px;
+  overflow: scroll;
+  scroll-behavior: smooth;
+  width: 100%;
+}
 
  } 
 
