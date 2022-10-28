@@ -104,6 +104,17 @@ h1 {
   box-shadow: 5px 10px;
 }
 
+#winner-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+}
+
+.scores{
+  font-family:'Lobster', cursive;
+  color: antiquewhite;
+}
+
 .profileDetails{
   width: 30%;
 }

@@ -2,6 +2,7 @@ const avatarList = document.querySelector(".avatarList");
 const playerInEdit = document.querySelector(".player-in-edit");
 const avatarListContainer = document.querySelector(".avatarListContainer");
 const saveProfileBtn = document.querySelector("#saveprofile-btn");
+const doneBtn = document.querySelector("#done-btn");
 const playerSelection = document.querySelector("#player-selection");
 const playerName = document.getElementById("playerName");
 
@@ -71,5 +72,8 @@ saveProfileBtn.addEventListener("click", () => {
     "playersDataRaceto100",
     JSON.stringify(storedPlayersData)
   );
+});
+
+doneBtn.addEventListener("click", () => {
   location.assign("/scoreboard.html");
 });

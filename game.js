@@ -20,6 +20,8 @@ const emojiP1 = document.querySelector("#p1emoji");
 const emojiP2 = document.querySelector("#p2emoji");
 const winnerDisplayBox = document.querySelector(".winner-display");
 const winnerDisplayName = document.querySelector(".winner-display span");
+const winnerScores = document.querySelector(".scores");
+const winnerAvatar = document.querySelector("#winner-avatar");
 const afterGameNav = document.querySelector(".after-game-nav");
 const scoreboardBtn = document.querySelector("#scoreboard-btn");
 const playagainBtn = document.querySelector("#playagain-btn");
@@ -59,7 +61,6 @@ let player1Score = 0;
 let player2Score = 0;
 
 //Display relevant profile pics
-console.log(p2Index);
 p1ProfilePic.src = storedPlayersData.playersData[p1Index].avatar;
 p2ProfilePic.src = storedPlayersData.playersData[p2Index].avatar;
 
@@ -108,6 +109,8 @@ rollBtn1.addEventListener("click", (e) => {
       p2pointer.classList.add("d-none");
       gameContainer.classList.add("d-none");
       winnerDisplayBox.classList.remove("d-none");
+      winnerAvatar.src = storedPlayersData.playersData[p1Index].avatar;
+      winnerScores.innerHTML = `Earned ${player1Score + randomNumber} points`;
       const winnerAudioSource = document.createElement("source");
       winnerAudioSource.setAttribute(
         "src",
@@ -118,14 +121,14 @@ rollBtn1.addEventListener("click", (e) => {
       diceWinnerAudio.play();
       afterGameNav.classList.remove("d-none");
       winnerDisplayName.innerHTML = `${playerOne} Wins!`;
-      dancer1.setAttribute(
-        "src",
-        `./gifs/dance${Math.floor(Math.random() * DANCEGIFS + 1)}.gif`
-      );
-      dancer2.setAttribute(
-        "src",
-        `./gifs/dance${Math.floor(Math.random() * DANCEGIFS + 1)}.gif`
-      );
+      // dancer1.setAttribute(
+      //   "src",
+      //   `./gifs/dance${Math.floor(Math.random() * DANCEGIFS + 1)}.gif`
+      // );
+      // dancer2.setAttribute(
+      //   "src",
+      //   `./gifs/dance${Math.floor(Math.random() * DANCEGIFS + 1)}.gif`
+      // );
 
       if (p1Index >= 0 && p2Index >= 0) {
         storedPlayersData.playersData[p1Index].gamesPlayed += 1;
@@ -210,15 +213,17 @@ rollBtn2.addEventListener("click", (e) => {
       diceWinnerAudio.append(winnerAudioSource);
       diceWinnerAudio.play();
       afterGameNav.classList.remove("d-none");
+      winnerAvatar.src = storedPlayersData.playersData[p2Index].avatar;
+      winnerScores.innerHTML = `Earned ${player2Score + randomNumber} points`;
       winnerDisplayName.innerHTML = `${playerTwo} Wins!`;
-      dancer1.setAttribute(
-        "src",
-        `./gifs/dance${Math.floor(Math.random() * DANCEGIFS + 1)}.gif`
-      );
-      dancer2.setAttribute(
-        "src",
-        `./gifs/dance${Math.floor(Math.random() * DANCEGIFS + 1)}.gif`
-      );
+      // dancer1.setAttribute(
+      //   "src",
+      //   `./gifs/dance${Math.floor(Math.random() * DANCEGIFS + 1)}.gif`
+      // );
+      // dancer2.setAttribute(
+      //   "src",
+      //   `./gifs/dance${Math.floor(Math.random() * DANCEGIFS + 1)}.gif`
+      // );
 
       if (p1Index >= 0 && p2Index >= 0) {
         storedPlayersData.playersData[p2Index].gamesPlayed += 1;
