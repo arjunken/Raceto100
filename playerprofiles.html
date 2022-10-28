@@ -47,8 +47,16 @@
           </div> 
            <div class="d-flex flex-row justify-content-center gap-2">                  
             <button type="submit" id="saveprofile-btn" class="btn btn-primary my-3 d-block">Save Player</button>
+            <button type="submit" id="delete-btn" class="btn btn-primary my-3 d-block">Delete</button>   
             <button type="submit" id="done-btn" class="btn btn-primary my-3 d-block">Done</button>      
-           </div> 
+           </div>
+           <p class="d-none alert alert-success player-update-alert">Player has been updated</p> 
+           <div class="form-check deletePlayer d-none w-75">
+            <input class="form-check-input" type="checkbox" value="" id="deleteCheckBox">
+            <label class="form-check-label alert alert-warning" for="deleteCheckBox">
+              This player will be deleted when you click on Done. Uncheck to undo.
+            </label>
+          </div>            
         </div>       
 
         </form>

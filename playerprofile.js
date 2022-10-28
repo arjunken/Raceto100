@@ -3,13 +3,18 @@ const playerInEdit = document.querySelector(".player-in-edit");
 const avatarListContainer = document.querySelector(".avatarListContainer");
 const saveProfileBtn = document.querySelector("#saveprofile-btn");
 const doneBtn = document.querySelector("#done-btn");
+const deleteBtn = document.querySelector("#delete-btn");
 const playerSelection = document.querySelector("#player-selection");
 const playerName = document.getElementById("playerName");
+const playerUpdateAlert = document.querySelector(".player-update-alert");
+const deletePlayer = document.querySelector(".deletePlayer");
+const deleteCheckBox = document.getElementById("deleteCheckBox");
 
 const numberOfAvatars = 28;
 let newAvatar;
 let newPlayerName;
 let selectedPlayerIndex = 0;
+let deletePlayerList = [];
 
 for (let i = 1; i <= numberOfAvatars; i++) {
   const avatarImgTag = document.createElement("img");
@@ -51,14 +56,17 @@ playerSelection.addEventListener("change", (e) => {
   playerName.value = storedPlayersData.playersData[e.target.selectedIndex].name;
   selectedPlayerIndex = e.target.selectedIndex;
   newPlayerName = playerName.value;
+  if (!deletePlayerList.includes(selectedPlayerIndex)) {
+    deletePlayer.classList.add("d-none");
+  } else {
+    deletePlayer.classList.remove("d-none");
+    deleteCheckBox.checked = true;
+  }
 });
 
 playerName.addEventListener("change", (e) => {
   newPlayerName = e.target.value;
-  let i = storedPlayersData.recentPlayers.find((name) => {
-    return name === curPlayerName;
-  });
-  if (i) {
+  if (storedPlayersData.recentPlayers.includes(curPlayerName)) {
     storedPlayersData.recentPlayers[i] = e.target.value;
   }
 });
@@ -72,8 +80,49 @@ saveProfileBtn.addEventListener("click", () => {
     "playersDataRaceto100",
     JSON.stringify(storedPlayersData)
   );
+  playerUpdateAlert.classList.remove("d-none");
+  setTimeout(() => {
+    playerUpdateAlert.classList.add("d-none");
+  }, 1000);
+});
+
+deleteBtn.addEventListener("click", () => {
+  if (!deletePlayerList.includes(selectedPlayerIndex)) {
+    deletePlayerList.push(selectedPlayerIndex);
+    deletePlayer.classList.remove("d-none");
+    deleteCheckBox.setAttribute("checked", "");
+  }
+});
+
+deleteCheckBox.addEventListener("change", () => {
+  if (!deleteCheckBox.checked) {
+    if (deletePlayerList.includes(selectedPlayerIndex)) {
+      deletePlayerList = deletePlayerList.filter((x) => {
+        return x !== selectedPlayerIndex;
+      });
+      deleteCheckBox.setAttribute("checked", "");
+      deletePlayer.classList.add("d-none");
+    }
+  }
 });
 
 doneBtn.addEventListener("click", () => {
+  if (deletePlayerList.length) {
+    for (let i = 0; i < deletePlayerList.length; i++) {
+      storedPlayersData.players.splice(deletePlayerList[i], 1);
+      storedPlayersData.playersData.splice(deletePlayerList[i], 1);
+      if (
+        storedPlayersData.recentPlayers.includes(
+          storedPlayersData.players[deletePlayerList[i]]
+        )
+      ) {
+        storedPlayersData.recentPlayers = [];
+      }
+    }
+    localStorage.setItem(
+      "playersDataRaceto100",
+      JSON.stringify(storedPlayersData)
+    );
+  }
   location.assign("/scoreboard.html");
 });

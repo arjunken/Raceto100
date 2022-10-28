@@ -6,11 +6,13 @@ const testInput = /^[a-zA-Z]{3,}$/;
 
 //Display recent players names in input fields
 let storedPlayersData = JSON.parse(
-  localStorage.getItem("recentPlayersRaceto100")
+  localStorage.getItem("playersDataRaceto100")
 );
 if (storedPlayersData) {
-  form.p1input.value = storedPlayersData.recentPlayers[0];
-  form.p2input.value = storedPlayersData.recentPlayers[1];
+  if (storedPlayersData.recentPlayers.length == 2) {
+    form.p1input.value = storedPlayersData.recentPlayers[0];
+    form.p2input.value = storedPlayersData.recentPlayers[1];
+  }
 }
 
 //Handle the user inputs window submit button
@@ -42,6 +44,8 @@ submit.addEventListener("click", (e) => {
           totalScore: 0,
           avatar: "./avatars/avatar0.jpg",
         };
+        storedPlayersData.recentPlayers[0] = form.p1input.value;
+        storedPlayersData.recentPlayers[1] = form.p2input.value;
         storedPlayersData.players.push(form.p1input.value);
         storedPlayersData.playersData.push(newPlayer);
         localStorage.setItem(
@@ -59,6 +63,8 @@ submit.addEventListener("click", (e) => {
           totalScore: 0,
           avatar: "./avatars/avatar0.jpg",
         };
+        storedPlayersData.recentPlayers[0] = form.p1input.value;
+        storedPlayersData.recentPlayers[1] = form.p2input.value;
         storedPlayersData.players.push(form.p2input.value);
         storedPlayersData.playersData.push(newPlayer);
         localStorage.setItem(
