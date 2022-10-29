@@ -2,7 +2,7 @@
 const submit = document.getElementById("btnDataFromUser");
 const form = document.getElementById("userInputs");
 const inputsWindow = document.getElementById("players-name-input");
-const testInput = /^[a-zA-Z]{3,}$/;
+const testInput = /^[a-zA-Z0-9]{3,}$/;
 
 //Display recent players names in input fields
 let storedPlayersData = JSON.parse(
@@ -44,14 +44,8 @@ submit.addEventListener("click", (e) => {
           totalScore: 0,
           avatar: "./avatars/avatar0.jpg",
         };
-        storedPlayersData.recentPlayers[0] = form.p1input.value;
-        storedPlayersData.recentPlayers[1] = form.p2input.value;
         storedPlayersData.players.push(form.p1input.value);
         storedPlayersData.playersData.push(newPlayer);
-        localStorage.setItem(
-          "playersDataRaceto100",
-          JSON.stringify(storedPlayersData)
-        );
       }
       //Update the second player
       if (!nameCheckP2) {
@@ -63,15 +57,15 @@ submit.addEventListener("click", (e) => {
           totalScore: 0,
           avatar: "./avatars/avatar0.jpg",
         };
-        storedPlayersData.recentPlayers[0] = form.p1input.value;
-        storedPlayersData.recentPlayers[1] = form.p2input.value;
         storedPlayersData.players.push(form.p2input.value);
         storedPlayersData.playersData.push(newPlayer);
-        localStorage.setItem(
-          "playersDataRaceto100",
-          JSON.stringify(storedPlayersData)
-        );
       }
+      storedPlayersData.recentPlayers[0] = form.p1input.value;
+      storedPlayersData.recentPlayers[1] = form.p2input.value;
+      localStorage.setItem(
+        "playersDataRaceto100",
+        JSON.stringify(storedPlayersData)
+      );
     } else {
       // If players data does not exist perform below function
       const playersData = {

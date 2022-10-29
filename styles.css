@@ -130,6 +130,19 @@ h1 {
   width: 60%;
 }
 
+footer {
+  margin-top: 5%;
+  color: #EEEEEE;
+  text-align: center;
+  background-color: #232931;
+  position:fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Media Based Styling */
+
 @media (max-width: 760px) { 
 
   #userInputs {  
@@ -149,13 +162,4 @@ h1 {
 
  } 
 
-footer {
-  margin-top: 5%;
-  color: #EEEEEE;
-  text-align: center;
-  background-color: #232931;
-  position:fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-}
+

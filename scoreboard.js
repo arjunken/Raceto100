@@ -18,10 +18,32 @@ if (localStorage.getItem("playersDataRaceto100")) {
 //create Tabulator on DOM element with id "score-board"
 var table = new Tabulator("#score-board", {
   data: playersData, //assign data to table
-  layout: "fitColumns", //fit columns to width of table (optional)
+  layout: "fitDataFill", //fit columns to width of table (optional)
+  responsiveLayout: true,
+  pagination: "local",
+  paginationSize: 6,
+  paginationSizeSelector: [3, 6, 8, 10],
+  movableColumns: true,
+  paginationCounter: "rows",
+  initialSort: [
+    { column: "totalScore", dir: "desc" }, //sort by this first
+    { column: "gamesWon", dir: "desc" }, //then sort by this second
+  ],
   columns: [
     //Define Table Columns
-    { title: "Player", field: "name", width: 150 },
+    {
+      title: "Avatar",
+      field: "avatar",
+      formatter: "image",
+      headerSort: false,
+      formatterParams: {
+        height: "50px",
+        width: "50px",
+        urlPrefix: "",
+        urlSuffix: "",
+      },
+    },
+    { title: "Player", field: "name", width: 150, headerSort: false },
     { title: "Games Played", field: "gamesPlayed" },
     { title: "Games Won", field: "gamesWon" },
     { title: "Total Score", field: "totalScore" },

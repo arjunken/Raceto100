@@ -73,7 +73,6 @@ playerName.addEventListener("change", (e) => {
 
 saveProfileBtn.addEventListener("click", () => {
   storedPlayersData.players[selectedPlayerIndex] = newPlayerName;
-  storedPlayersData.recentPlayers[selectedPlayerIndex] = newPlayerName;
   storedPlayersData.playersData[selectedPlayerIndex].name = newPlayerName;
   storedPlayersData.playersData[selectedPlayerIndex].avatar = newAvatar;
   localStorage.setItem(
@@ -109,8 +108,6 @@ deleteCheckBox.addEventListener("change", () => {
 doneBtn.addEventListener("click", () => {
   if (deletePlayerList.length) {
     for (let i = 0; i < deletePlayerList.length; i++) {
-      storedPlayersData.players.splice(deletePlayerList[i], 1);
-      storedPlayersData.playersData.splice(deletePlayerList[i], 1);
       if (
         storedPlayersData.recentPlayers.includes(
           storedPlayersData.players[deletePlayerList[i]]
@@ -118,6 +115,8 @@ doneBtn.addEventListener("click", () => {
       ) {
         storedPlayersData.recentPlayers = [];
       }
+      storedPlayersData.players.splice(deletePlayerList[i], 1);
+      storedPlayersData.playersData.splice(deletePlayerList[i], 1);
     }
     localStorage.setItem(
       "playersDataRaceto100",

@@ -3,22 +3,27 @@
   <head>
     <meta charset="utf-8" />
     <title>Dicee</title>
-    <script
-      src="https://kit.fontawesome.com/86da273acb.js"
-      crossorigin="anonymous"
-    ></script>
+
+    <!-- CSS only -->
     <link
       href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster"
       rel="stylesheet"
     />
-    <!-- CSS only -->
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
+
+    <link rel="stylesheet" href="styles.css" />
     <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://kit.fontawesome.com/86da273acb.js"
+      crossorigin="anonymous"
+    ></script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
@@ -32,7 +37,6 @@
       type="text/javascript"
       src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"
     ></script>
-    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div
@@ -49,7 +53,7 @@
       </div>
 
       <h4 class="text-light mt-4">Players Scoreboard</h4>
-      <div id="score-board"></div>
+      <div id="score-board" class="rounded-3"></div>
     </div>
 
     <script src="./scoreboard.js"></script>
