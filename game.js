@@ -32,7 +32,7 @@ const diceResultAudio = document.getElementById("dice-result-audio");
 const diceWinnerAudio = document.getElementById("dice-winner-audio");
 const dancer1 = document.querySelector(".dancer1");
 const dancer2 = document.querySelector(".dancer2");
-const TARGET = 3;
+const TARGET = 10;
 const DANCEGIFS = 15;
 let playerOne = "Player 1";
 let playerTwo = "Player 2";
@@ -90,13 +90,15 @@ if (storedPlayersData.recentPlayers.length > 0) {
       const timer = setInterval(() => {
         p1Score.innerHTML = player1Score + increment;
         if (increment === randomNumber) {
-          player1Score += randomNumber;
+          player1Score + randomNumber > TARGET
+            ? (p1Score.innerHTML = player1Score)
+            : (player1Score += randomNumber);
           clearInterval(timer);
         } else {
           increment++;
         }
       }, 100);
-      if (player1Score + randomNumber >= TARGET) {
+      if (player1Score + randomNumber == TARGET) {
         //End the game
         rollBtn1.disabled = true;
         rollBtn2.disabled = true;
@@ -185,13 +187,15 @@ if (storedPlayersData.recentPlayers.length > 0) {
       const timer = setInterval(() => {
         p2Score.innerHTML = player2Score + increment;
         if (increment === randomNumber) {
-          player2Score += randomNumber;
+          player2Score + randomNumber > TARGET
+            ? (p2Score.innerHTML = player2Score)
+            : (player2Score += randomNumber);
           clearInterval(timer);
         } else {
           increment++;
         }
       }, 100);
-      if (player2Score + randomNumber >= TARGET) {
+      if (player2Score + randomNumber == TARGET) {
         //End the game
         rollBtn1.disabled = true;
         rollBtn2.disabled = true;

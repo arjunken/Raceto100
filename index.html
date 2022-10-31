@@ -3,14 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <title>Dicee</title>
-    <script
-      src="https://kit.fontawesome.com/86da273acb.js"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster"
-      rel="stylesheet"
-    />
+    <script src="https://kit.fontawesome.com/86da273acb.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet" />
     <!-- CSS only -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
@@ -33,46 +27,33 @@
       <h5 class="text-secondary text-center mb-5">
         Wanna rece to 100? Let's roll the dice and see who reaches 100 first:)
       </h5>
-      <form
-        id="userInputs"
-        class="shadow-lg rounded-1 d-flex flex-column align-items-center"
-      >
-        <div class="input-group mb-2">
-          <div class="input-group-prepend">
-            <div class="input-group-text rounded-0">Player 1</div>
-          </div>
-          <input
-            type="text"
-            class="form-control"
-            name="p1input"
-            placeholder="Name"
-            onClick="this.select()"
-            autofocus
-          />
+      <form id="userInputs" class="shadow-lg rounded-1 d-flex flex-column align-items-center">
+        <div class="input-group m-2">
+          <select class="form-select form-control rounded-0" id="choose-player-p1" autofocus>
+            <option value="-2" selected>Select Player 1</option>
+            <option value="-1">New Player</option>
+          </select>
+
+          <input type="text" class="form-control d-none p1inputnew" name="p1inputnew" placeholder="New Player Name" />
         </div>
 
-        <div class="input-group mb-4">
-          <div class="input-group-prepend">
-            <div class="input-group-text rounded-0">Player 2</div>
-          </div>
-          <input
-            type="text"
-            class="form-control"
-            name="p2input"
-            placeholder="Name"
-            onClick="this.select()"
-          />
+        <div class="input-group m-2">
+          <select class="form-select rounded-0" id="choose-player-p2">
+            <option value="-2" selected>Select Player 2</option>
+            <option value="-1">New Player</option>
+          </select>
+
+          <input type="text" class="form-control d-none p2inputnew" name="p2inputnew" placeholder="New Player Name" />
         </div>
 
         <div class="col-12 text-center">
-          <button
-            type="submit"
-            class="btn btn-primary mb-2"
-            id="btnDataFromUser"
-          >
-            Let's go!
-          </button>
+          <button type="submit" class="btn btn-primary mb-2" id="btnDataFromUser" disabled>Let's go!</button>
         </div>
+        <p class="formvalidation alert alert-warning d-none">Names can't be same. Try again!</p>
+        <p class="player-availability-check alert alert-warning d-none">One of the Players name is already taken!</p>
+        <p class="input-valid-check alert alert-warning d-none">
+          Name can't be small. Don't include special characters.
+        </p>
       </form>
     </div>
 
