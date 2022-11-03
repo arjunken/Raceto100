@@ -232,18 +232,18 @@ if (storedPlayersData.recentPlayers.length > 0) {
   });
 
   playagainBtn.addEventListener("click", () => {
-    location.assign("/game.html");
+    location.assign("game.html");
   });
   scoreboardBtn.addEventListener("click", () => {
-    location.assign("/scoreboard.html");
+    location.assign("scoreboard.html");
   });
   newGameBtn.addEventListener("click", () => {
-    location.assign("/index.html");
+    location.assign("index.html");
   });
   editProfileBtn.addEventListener("click", () => {
-    location.assign("/playerprofiles.html");
+    location.assign("playerprofiles.html");
   });
 } else {
-  location.assign("./index.html");
+  location.assign("index.html");
 }
 //******END OF GAME SESSION CODE ******
