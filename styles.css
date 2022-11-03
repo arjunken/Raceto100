@@ -31,6 +31,10 @@ h1 {
   color: bisque;
 }
 
+#btn-roll-p1,#btn-roll-p2{
+  background-color: #4ECCA3;
+}
+
 .dice-results-p1, .dice-results-p2{ 
   z-index: 1; 
   background-color: burlywood;
@@ -59,8 +63,6 @@ h1 {
     width: 6%;
     cursor: pointer;    
   }
-
-  
 
   .winner-display{
     background-image: url('./gifs/sparkles.gif');    
@@ -139,6 +141,34 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%;
+}
+
+.gold{
+  background-color:#ebb000;
+  color: white;
+  border-radius:50%;
+  padding: 5px 10px;  
+  font-size:1.3rem;
+}
+
+.penalty{
+  background-color: #9C060C;
+  color: white;
+  border-radius:50%;
+  padding: 5px 10px;  
+  font-size:1.3rem; 
+}
+
+.diamond{
+  background-color: #3DD9EB;
+  color: white;
+  border-radius:50%;
+  padding: 5px 10px;  
+  font-size:1.3rem; 
+}
+
+.gold-coin, .diamond-coin{
+  width: 15%;
 }
 
 /* Media Based Styling */

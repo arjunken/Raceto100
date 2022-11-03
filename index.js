@@ -49,6 +49,12 @@ if (choosePlayerP2.options[choosePlayerP2.selectedIndex].value >= 0) {
   player2 = choosePlayerP2.options[choosePlayerP2.selectedIndex].text;
 }
 
+if (player1 && player2) {
+  submit.disabled = false;
+} else {
+  submit.disabled = true;
+}
+
 //Handle new player option selection
 choosePlayerP1.addEventListener("change", (e) => {
   if (e.target.value == -1) {
@@ -70,6 +76,7 @@ choosePlayerP1.addEventListener("change", (e) => {
     submit.disabled = true;
   }
 });
+
 choosePlayerP2.addEventListener("change", (e) => {
   if (e.target.value == -1) {
     p2InputNew.value = "";
@@ -182,6 +189,8 @@ submit.addEventListener("click", (e) => {
           gamesPlayed: 0,
           gamesWon: 0,
           totalScore: 0,
+          gold: 50,
+          diamond: 0,
           avatar: "./avatars/avatar0.jpg",
         },
         {
@@ -190,6 +199,8 @@ submit.addEventListener("click", (e) => {
           gamesPlayed: 0,
           gamesWon: 0,
           totalScore: 0,
+          gold: 50,
+          diamond: 0,
           avatar: "./avatars/avatar0.jpg",
         },
       ],

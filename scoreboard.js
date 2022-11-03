@@ -7,9 +7,7 @@ let playersData = [];
 
 //Get the Players Data from local storage
 if (localStorage.getItem("playersDataRaceto100")) {
-  const storedPlayersData = JSON.parse(
-    localStorage.getItem("playersDataRaceto100")
-  );
+  const storedPlayersData = JSON.parse(localStorage.getItem("playersDataRaceto100"));
   playersData = storedPlayersData.playersData;
 } else {
   playersData = [];
@@ -46,6 +44,8 @@ var table = new Tabulator("#score-board", {
     { title: "Player", field: "name", width: 150, headerSort: false },
     { title: "Games Played", field: "gamesPlayed" },
     { title: "Games Won", field: "gamesWon" },
+    { title: "Gold Coins", field: "gold" },
+    { title: "Diamond Coins", field: "diamond" },
     { title: "Total Score", field: "totalScore" },
   ],
 });
