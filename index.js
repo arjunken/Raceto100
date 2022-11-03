@@ -208,7 +208,7 @@ submit.addEventListener("click", (e) => {
     localStorage.setItem("playersDataRaceto100", JSON.stringify(newPlayer));
     storedPlayersData = JSON.parse(localStorage.getItem("playersDataRaceto100"));
     //Take Users to Game Page
-    location.assign("/game.html");
+    location.assign(window.location.origin + window.location.pathname + "game.html");
   } else {
     //Update the first player
     if (selectOptionP1 == -1) {
@@ -246,6 +246,6 @@ submit.addEventListener("click", (e) => {
 
     localStorage.setItem("playersDataRaceto100", JSON.stringify(storedPlayersData));
     //Take Users to Game Page
-    location.assign("/game.html");
+    location.assign(window.location.origin + window.location.pathname + "game.html");
   }
 });

@@ -33,9 +33,7 @@ avatarListContainer.addEventListener("click", (e) => {
 });
 
 //Get the Players Data
-let storedPlayersData = JSON.parse(
-  localStorage.getItem("playersDataRaceto100")
-);
+let storedPlayersData = JSON.parse(localStorage.getItem("playersDataRaceto100"));
 
 for (let i = 0; i < storedPlayersData.players.length; i++) {
   const optionTag = document.createElement("option");
@@ -51,8 +49,7 @@ newPlayerName = storedPlayersData.playersData[0].name;
 newAvatar = storedPlayersData.playersData[0].avatar;
 
 playerSelection.addEventListener("change", (e) => {
-  playerInEdit.src =
-    storedPlayersData.playersData[e.target.selectedIndex].avatar;
+  playerInEdit.src = storedPlayersData.playersData[e.target.selectedIndex].avatar;
   playerName.value = storedPlayersData.playersData[e.target.selectedIndex].name;
   selectedPlayerIndex = e.target.selectedIndex;
   newPlayerName = playerName.value;
@@ -75,10 +72,7 @@ saveProfileBtn.addEventListener("click", () => {
   storedPlayersData.players[selectedPlayerIndex] = newPlayerName;
   storedPlayersData.playersData[selectedPlayerIndex].name = newPlayerName;
   storedPlayersData.playersData[selectedPlayerIndex].avatar = newAvatar;
-  localStorage.setItem(
-    "playersDataRaceto100",
-    JSON.stringify(storedPlayersData)
-  );
+  localStorage.setItem("playersDataRaceto100", JSON.stringify(storedPlayersData));
   playerUpdateAlert.classList.remove("d-none");
   setTimeout(() => {
     playerUpdateAlert.classList.add("d-none");
@@ -108,20 +102,13 @@ deleteCheckBox.addEventListener("change", () => {
 doneBtn.addEventListener("click", () => {
   if (deletePlayerList.length) {
     for (let i = 0; i < deletePlayerList.length; i++) {
-      if (
-        storedPlayersData.recentPlayers.includes(
-          storedPlayersData.players[deletePlayerList[i]]
-        )
-      ) {
+      if (storedPlayersData.recentPlayers.includes(storedPlayersData.players[deletePlayerList[i]])) {
         storedPlayersData.recentPlayers = [];
       }
       storedPlayersData.players.splice(deletePlayerList[i], 1);
       storedPlayersData.playersData.splice(deletePlayerList[i], 1);
     }
-    localStorage.setItem(
-      "playersDataRaceto100",
-      JSON.stringify(storedPlayersData)
-    );
+    localStorage.setItem("playersDataRaceto100", JSON.stringify(storedPlayersData));
   }
-  location.assign("/scoreboard.html");
+  location.assign(window.location.origin + window.location.pathname + "scoreboard.html");
 });
