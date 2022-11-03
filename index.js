@@ -189,7 +189,7 @@ submit.addEventListener("click", (e) => {
           gamesPlayed: 0,
           gamesWon: 0,
           totalScore: 0,
-          gold: 50,
+          gold: 0,
           diamond: 0,
           avatar: "./avatars/avatar0.jpg",
         },
@@ -199,7 +199,7 @@ submit.addEventListener("click", (e) => {
           gamesPlayed: 0,
           gamesWon: 0,
           totalScore: 0,
-          gold: 50,
+          gold: 0,
           diamond: 0,
           avatar: "./avatars/avatar0.jpg",
         },
@@ -208,7 +208,7 @@ submit.addEventListener("click", (e) => {
     localStorage.setItem("playersDataRaceto100", JSON.stringify(newPlayer));
     storedPlayersData = JSON.parse(localStorage.getItem("playersDataRaceto100"));
     //Take Users to Game Page
-    location.assign(window.location.origin + window.location.pathname + "game.html");
+    location.assign("game.html");
   } else {
     //Update the first player
     if (selectOptionP1 == -1) {
@@ -218,6 +218,8 @@ submit.addEventListener("click", (e) => {
         gamesPlayed: 0,
         gamesWon: 0,
         totalScore: 0,
+        gold: 0,
+        diamond: 0,
         avatar: "./avatars/avatar0.jpg",
       };
       storedPlayersData.recentPlayers[0] = typedPlayerP1;
@@ -235,6 +237,8 @@ submit.addEventListener("click", (e) => {
         gamesPlayed: 0,
         gamesWon: 0,
         totalScore: 0,
+        gold: 0,
+        diamond: 0,
         avatar: "./avatars/avatar0.jpg",
       };
       storedPlayersData.recentPlayers[1] = typedPlayerP2;
@@ -246,6 +250,7 @@ submit.addEventListener("click", (e) => {
 
     localStorage.setItem("playersDataRaceto100", JSON.stringify(storedPlayersData));
     //Take Users to Game Page
-    location.assign(window.location.origin + window.location.pathname + "game.html");
+    console.log(window.location.href);
+    location.assign("game.html");
   }
 });

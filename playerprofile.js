@@ -110,5 +110,5 @@ doneBtn.addEventListener("click", () => {
     }
     localStorage.setItem("playersDataRaceto100", JSON.stringify(storedPlayersData));
   }
-  location.assign(window.location.origin + window.location.pathname + "scoreboard.html");
+  location.assign("scoreboard.html");
 });

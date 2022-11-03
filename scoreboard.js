@@ -51,13 +51,13 @@ var table = new Tabulator("#score-board", {
 });
 
 playagainBtn.addEventListener("click", () => {
-  location.assign(window.location.origin + window.location.pathname + "game.html");
+  location.assign("game.html");
 });
 
 newGameBtn.addEventListener("click", () => {
-  location.assign(window.location.origin + window.location.pathname + "index.html");
+  location.assign("index.html");
 });
 
 editProfileBtn.addEventListener("click", () => {
-  location.assign(window.location.origin + window.location.pathname + "playerprofiles.html");
+  location.assign("playerprofiles.html");
 });
