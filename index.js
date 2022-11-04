@@ -179,6 +179,10 @@ submit.addEventListener("click", (e) => {
   const typedPlayerP2 = p2InputNew.value;
 
   if (!playersDataExists) {
+    let p2avatar = "avatars/avatar0.jpg";
+    if (selectOptionP2 == -3) {
+      p2avatar = "avatars/shakuni.jpeg";
+    }
     const newPlayer = {
       recentPlayers: [player1, player2],
       players: [player1, player2],
@@ -201,7 +205,7 @@ submit.addEventListener("click", (e) => {
           totalScore: 0,
           gold: 0,
           diamond: 0,
-          avatar: "avatars/avatar0.jpg",
+          avatar: p2avatar,
         },
       ],
     };

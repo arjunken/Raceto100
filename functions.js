@@ -23,17 +23,16 @@ const displayDiceResults = (
   otherPointer
 ) => {
   thisDiceResults.classList.remove("d-none");
-  setTimeout(() => {
-    thisDiceResults.classList.add("d-none");
-    //Initialize things
-    otherRollBtn.disabled = false;
-    thisRollBtn.classList.add("btn-light", "text-muted");
-    otherRollBtn.classList.remove("btn-light", "text-muted");
-    thisChp.classList.replace("bg-opacity-75", "bg-opacity-25");
-    otherChp.classList.replace("bg-opacity-25", "bg-opacity-75");
-    thisPointer.classList.toggle("d-none");
-    otherPointer.classList.toggle("d-none");
-  }, 1500);
+  thisDiceResults.classList.add("d-none");
+  //Initialize things
+  thisRollBtn.disabled = true;
+  otherRollBtn.disabled = false;
+  thisRollBtn.classList.add("btn-light", "text-muted");
+  otherRollBtn.classList.remove("btn-light", "text-muted");
+  thisChp.classList.replace("bg-opacity-75", "bg-opacity-25");
+  otherChp.classList.replace("bg-opacity-25", "bg-opacity-75");
+  thisPointer.classList.toggle("d-none");
+  otherPointer.classList.toggle("d-none");
 };
 
 //Function to end the game
@@ -135,18 +134,30 @@ const playDice = async (
   afterGameNav,
   winnerDisplayName,
   storedPlayersData,
-  winnerScores
+  winnerScores,
+  pitruAudio
 ) => {
-  diceRollAudio.play();
+  if (playerX === "Shakuni-The ROBOT") {
+    thisRollBtn.disabled = true;
+    await sleep(1500);
+  }
+
   //disable the roll button
   thisRollBtn.disabled = true;
 
   //Dice Code
+  let randomNumber = Math.floor(Math.random() * 6 + 1);
+  if (playerX === "Shakuni-The ROBOT") {
+    randomNumber = chance.weighted([1, 2, 3, 4, 5, 6], SMARTNESS);
+    if (chance.bool({ likelihood: SHAKUNI_LASTDICE_CHANCE }) && TARGET - thisPlayerScore <= 6) {
+      randomNumber = TARGET - thisPlayerScore;
+      pitruAudio.play();
+    }
+  }
+  diceRollAudio.play();
   thisDiceImage.setAttribute("src", "gifs/dice.gif");
   await sleep(1300);
-
   diceResultAudio.play();
-  let randomNumber = Math.floor(Math.random() * 6 + 1);
   thisDiceImage.setAttribute("src", `images/dice${randomNumber}.png`);
   thisDiceResults.innerHTML = `You got ${randomNumber}`;
   thisPlayerScore += randomNumber;
@@ -193,6 +204,7 @@ const playDice = async (
 
   if (thisPlayerScore == TARGET) {
     //End the game
+    await sleep(2000);
     endTheGame(
       thisRollBtn,
       otherRollBtn,
@@ -219,6 +231,7 @@ const playDice = async (
       randomNumber,
       winnerScores
     );
+    throw new Error("Congratulations!");
   } else {
     displayDiceResults(thisDiceResults, thisRollBtn, otherRollBtn, thisChp, otherChp, thisPointer, otherPointer);
   }

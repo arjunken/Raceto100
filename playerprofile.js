@@ -10,7 +10,7 @@ const playerUpdateAlert = document.querySelector(".player-update-alert");
 const deletePlayer = document.querySelector(".deletePlayer");
 const deleteCheckBox = document.getElementById("deleteCheckBox");
 
-const numberOfAvatars = 28;
+const numberOfAvatars = 44;
 let newAvatar;
 let newPlayerName;
 let selectedPlayerIndex = 0;
@@ -36,10 +36,12 @@ avatarListContainer.addEventListener("click", (e) => {
 let storedPlayersData = JSON.parse(localStorage.getItem("playersDataRaceto100"));
 
 for (let i = 0; i < storedPlayersData.players.length; i++) {
-  const optionTag = document.createElement("option");
-  optionTag.value = storedPlayersData.playersData[i].avatar;
-  optionTag.textContent = storedPlayersData.players[i];
-  playerSelection.append(optionTag);
+  if (storedPlayersData.players[i] !== "Shakuni-The ROBOT") {
+    const optionTag = document.createElement("option");
+    optionTag.value = storedPlayersData.playersData[i].avatar;
+    optionTag.textContent = storedPlayersData.players[i];
+    playerSelection.append(optionTag);
+  }
 }
 
 playerInEdit.src = storedPlayersData.playersData[0].avatar;

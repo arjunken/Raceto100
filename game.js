@@ -16,6 +16,7 @@ const diceWinnerAudio = document.getElementById("dice-winner-audio");
 const goldCollectAudio = document.getElementById("gold-collect-audio");
 const goldLostAudio = document.getElementById("gold-lost-audio");
 const diamondsCollectAudio = document.getElementById("diamonds-collect-audio");
+const pitruAudio = document.getElementById("pitru-audio");
 const npcNumbers = document.querySelector(".npc-numbers");
 const rapContainer = document.querySelector(".rap-container");
 //Player1 variables
@@ -44,9 +45,17 @@ const goldCoinP2 = document.querySelector("#gold-coin-p2");
 const diamondCoinP2 = document.querySelector("#diamond-coin-p2");
 
 //Global variables
-const TARGET = 100;
+const TARGET = 25;
 let playerOne = "Player 1";
 let playerTwo = "Player 2";
+const ROBOT_INTEL = [
+  [0, 1, 5, 15, 30, 50],
+  [2, 3, 5, 10, 40, 40],
+  [2, 3, 10, 15, 25, 45],
+  [5, 10, 15, 20, 20, 30],
+];
+const SHAKUNI_LASTDICE_CHANCE = 70;
+const SMARTNESS = ROBOT_INTEL[Math.floor(Math.random() * 4)];
 
 //Get the current player names
 let storedPlayersData = JSON.parse(localStorage.getItem("playersDataRaceto100"));
@@ -165,7 +174,8 @@ if (storedPlayersData.recentPlayers.length > 0) {
       afterGameNav,
       winnerDisplayName,
       storedPlayersData,
-      winnerScores
+      winnerScores,
+      pitruAudio
     );
 
     result
@@ -174,8 +184,61 @@ if (storedPlayersData.recentPlayers.length > 0) {
         goldEarnedP1 = data[1];
         diamondsEarnedP1 = data[2];
       })
+      .then(() => {
+        if (playerTwo === "Shakuni-The ROBOT") {
+          const result = playDice(
+            diceRollAudio,
+            rollBtn2,
+            rollBtn1,
+            chp2,
+            chp1,
+            p2pointer,
+            p1pointer,
+            diceImageP2,
+            p2Index,
+            p1Index,
+            diceResultAudio,
+            diceResultsP2,
+            player2Score,
+            player1Score,
+            goldEarnedP2,
+            goldEarnedP1,
+            diamondsEarnedP2,
+            diamondsEarnedP1,
+            emojiP2,
+            playerTwo,
+            npcArray,
+            p2Score,
+            goldCoinP2,
+            diamondCoinP2,
+            goldCollectAudio,
+            goldLostAudio,
+            randomNumberArray,
+            diamondsCollectAudio,
+            gameContainer,
+            winnerDisplayBox,
+            winnerAvatar,
+            diceWinnerAudio,
+            afterGameNav,
+            winnerDisplayName,
+            storedPlayersData,
+            winnerScores,
+            pitruAudio
+          );
+
+          result
+            .then((data) => {
+              player2Score = data[0];
+              goldEarnedP2 = data[1];
+              diamondsEarnedP2 = data[2];
+            })
+            .catch((err) => {
+              console.log(err.message);
+            });
+        }
+      })
       .catch((err) => {
-        console.log("Some Error in getting dice results data:", err);
+        console.log(err.message);
       });
   });
 
@@ -217,7 +280,8 @@ if (storedPlayersData.recentPlayers.length > 0) {
       afterGameNav,
       winnerDisplayName,
       storedPlayersData,
-      winnerScores
+      winnerScores,
+      pitruAudio
     );
 
     result
@@ -227,7 +291,7 @@ if (storedPlayersData.recentPlayers.length > 0) {
         diamondsEarnedP2 = data[2];
       })
       .catch((err) => {
-        console.log("Some Error in getting dice results data:", err);
+        console.log(err.message);
       });
   });
 
