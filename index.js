@@ -21,24 +21,26 @@ let storedPlayersData = JSON.parse(localStorage.getItem("playersDataRaceto100"))
 if (storedPlayersData) {
   if (storedPlayersData.players.length > 0) {
     for (let i = 0; i < storedPlayersData.players.length; i++) {
-      const optionTag = document.createElement("option");
-      optionTag.setAttribute("value", i);
-      optionTag.textContent = storedPlayersData.players[i];
-      if (storedPlayersData.recentPlayers[0] === storedPlayersData.players[i]) {
-        optionTag.selected = true;
+      if (storedPlayersData.players[i] !== "Shakuni-The ROBOT") {
+        //Update Player1 Selection dropbox
+        let optionTag = document.createElement("option");
+        optionTag.setAttribute("value", i);
+        optionTag.textContent = storedPlayersData.players[i];
+        if (storedPlayersData.recentPlayers[0] === storedPlayersData.players[i]) {
+          optionTag.selected = true;
+        }
+        choosePlayerP1.insertBefore(optionTag, choosePlayerP1.lastChild);
+        //Update Player2 Selection dropbox
+        optionTag = document.createElement("option");
+        optionTag.setAttribute("value", i);
+        optionTag.textContent = storedPlayersData.players[i];
+        if (storedPlayersData.recentPlayers[1] === storedPlayersData.players[i]) {
+          optionTag.selected = true;
+        }
+        choosePlayerP2.insertBefore(optionTag, choosePlayerP2.lastChild);
+        playersDataExists = true;
       }
-      choosePlayerP1.insertBefore(optionTag, choosePlayerP1.lastChild);
     }
-    for (let i = 0; i < storedPlayersData.players.length; i++) {
-      const optionTag = document.createElement("option");
-      optionTag.setAttribute("value", i);
-      optionTag.textContent = storedPlayersData.players[i];
-      if (storedPlayersData.recentPlayers[1] === storedPlayersData.players[i]) {
-        optionTag.selected = true;
-      }
-      choosePlayerP2.insertBefore(optionTag, choosePlayerP2.lastChild);
-    }
-    playersDataExists = true;
   }
 }
 
@@ -49,7 +51,7 @@ if (choosePlayerP2.options[choosePlayerP2.selectedIndex].value >= 0) {
   player2 = choosePlayerP2.options[choosePlayerP2.selectedIndex].text;
 }
 
-if (player1 && player2) {
+if (player1 && player2 && player1 !== player2) {
   submit.disabled = false;
 } else {
   submit.disabled = true;
