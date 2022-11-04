@@ -191,7 +191,7 @@ submit.addEventListener("click", (e) => {
           totalScore: 0,
           gold: 0,
           diamond: 0,
-          avatar: "./avatars/avatar0.jpg",
+          avatar: "avatars/avatar0.jpg",
         },
         {
           id: 1,
@@ -201,7 +201,7 @@ submit.addEventListener("click", (e) => {
           totalScore: 0,
           gold: 0,
           diamond: 0,
-          avatar: "./avatars/avatar0.jpg",
+          avatar: "avatars/avatar0.jpg",
         },
       ],
     };
@@ -220,7 +220,7 @@ submit.addEventListener("click", (e) => {
         totalScore: 0,
         gold: 0,
         diamond: 0,
-        avatar: "./avatars/avatar0.jpg",
+        avatar: "/avatars/avatar0.jpg",
       };
       storedPlayersData.recentPlayers[0] = typedPlayerP1;
       storedPlayersData.players.push(typedPlayerP1);
@@ -239,7 +239,7 @@ submit.addEventListener("click", (e) => {
         totalScore: 0,
         gold: 0,
         diamond: 0,
-        avatar: "./avatars/avatar0.jpg",
+        avatar: "avatars/avatar0.jpg",
       };
       storedPlayersData.recentPlayers[1] = typedPlayerP2;
       storedPlayersData.players.push(typedPlayerP2);

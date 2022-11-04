@@ -20,7 +20,7 @@ for (let i = 1; i <= numberOfAvatars; i++) {
   const avatarImgTag = document.createElement("img");
   avatarImgTag.classList.add("avtr-img");
   avatarImgTag.classList.add("rounded-2");
-  avatarImgTag.src = `./avatars/avatar${i}.jpg`;
+  avatarImgTag.src = `avatars/avatar${i}.jpg`;
   avatarList.append(avatarImgTag);
 }
 

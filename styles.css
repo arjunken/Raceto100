@@ -9,7 +9,7 @@
 
 body {
   background-color:#232931;
-  background-image: url('./gifs/stars.gif');
+  background-image: url('gifs/stars.gif');
   background-repeat: repeat;
 }
 
@@ -65,7 +65,7 @@ h1 {
   }
 
   .winner-display{
-    background-image: url('./gifs/sparkles.gif');    
+    background-image: url('gifs/sparkles.gif');    
     width:100%;
     height:100%;
     display: flex;  

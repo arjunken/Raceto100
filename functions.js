@@ -77,7 +77,7 @@ const endTheGame = (
   winnerAvatar.src = storedPlayersData.playersData[thisIndex].avatar;
   winnerScores.innerHTML = `Earned ${thisPlayerScore} points`;
   const winnerAudioSource = document.createElement("source");
-  winnerAudioSource.setAttribute("src", `./sounds/celebrate${randomNumber}.wav`);
+  winnerAudioSource.setAttribute("src", `sounds/celebrate${randomNumber}.wav`);
   winnerAudioSource.setAttribute("type", "audio/wav");
   diceWinnerAudio.append(winnerAudioSource);
   diceWinnerAudio.play();
@@ -142,12 +142,12 @@ const playDice = async (
   thisRollBtn.disabled = true;
 
   //Dice Code
-  thisDiceImage.setAttribute("src", "./gifs/dice.gif");
+  thisDiceImage.setAttribute("src", "gifs/dice.gif");
   await sleep(1300);
 
   diceResultAudio.play();
   let randomNumber = Math.floor(Math.random() * 6 + 1);
-  thisDiceImage.setAttribute("src", `./images/dice${randomNumber}.png`);
+  thisDiceImage.setAttribute("src", `images/dice${randomNumber}.png`);
   thisDiceResults.innerHTML = `You got ${randomNumber}`;
   thisPlayerScore += randomNumber;
 
@@ -158,9 +158,9 @@ const playDice = async (
 
   //show emoji
   if (thisPlayerScore >= otherPlayerScore) {
-    thisEmoji.setAttribute("src", `./images/happy${randomNumber}.svg`);
+    thisEmoji.setAttribute("src", `images/happy${randomNumber}.svg`);
   } else {
-    thisEmoji.setAttribute("src", `./images/sad${randomNumber}.svg`);
+    thisEmoji.setAttribute("src", `images/sad${randomNumber}.svg`);
   }
 
   //Add or reduce rewards for the player 1

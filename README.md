@@ -22,7 +22,7 @@ There are 4 ways to get started:
 2. If you have git installed on your computer, simply clone the respositor using the following command in your terminal:
    `git init https://github.com/arjunken/Raceto100.git`. This will create a separate folder with the repository name. Open the folder and click on index.html.
 3. If you have a personal website, copy the entite folder to a specific path and access your website.
-4. I have made this app accessible to all at this path https://arjunken.com/raceto100.
+4. I have made this app accessible to all at this path https://arjunken.github.io/Raceto100/.
 
 ## Share your feedback
 
