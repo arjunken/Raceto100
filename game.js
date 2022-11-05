@@ -45,7 +45,7 @@ const goldCoinP2 = document.querySelector("#gold-coin-p2");
 const diamondCoinP2 = document.querySelector("#diamond-coin-p2");
 
 //Global variables
-const TARGET = 10;
+const TARGET = 100;
 let playerOne = "Player 1";
 let playerTwo = "Player 2";
 const ROBOT_INTEL = [
