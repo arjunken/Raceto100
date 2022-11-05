@@ -14,32 +14,52 @@ let player1 = null;
 let player2 = null;
 let playersDataExists = false;
 
-//Display recent players names in input fields
+//Get the stored players Data
 let storedPlayersData = JSON.parse(localStorage.getItem("playersDataRaceto100"));
+// If Stored Players Data does not exist, initialize Shakuni Robot player first
+if (!storedPlayersData) {
+  const newPlayer = {
+    recentPlayers: [],
+    players: ["Shakuni-The ROBOT"],
+    playersData: [
+      {
+        id: 0,
+        name: "Shakuni-The ROBOT",
+        gamesPlayed: 0,
+        gamesWon: 0,
+        totalScore: 0,
+        gold: 0,
+        diamond: 0,
+        avatar: "avatars/shakuni.jpeg",
+        earnedAvatars: 1,
+      },
+    ],
+  };
+  localStorage.setItem("playersDataRaceto100", JSON.stringify(newPlayer));
+  storedPlayersData = JSON.parse(localStorage.getItem("playersDataRaceto100"));
+}
 
 //display existing players if they exist in the system
 if (storedPlayersData) {
-  if (storedPlayersData.players.length > 0) {
-    for (let i = 0; i < storedPlayersData.players.length; i++) {
-      if (storedPlayersData.players[i] !== "Shakuni-The ROBOT") {
-        //Update Player1 Selection dropbox
-        let optionTag = document.createElement("option");
-        optionTag.setAttribute("value", i);
-        optionTag.textContent = storedPlayersData.players[i];
-        if (storedPlayersData.recentPlayers[0] === storedPlayersData.players[i]) {
-          optionTag.selected = true;
-        }
-        choosePlayerP1.insertBefore(optionTag, choosePlayerP1.lastChild);
-        //Update Player2 Selection dropbox
-        optionTag = document.createElement("option");
-        optionTag.setAttribute("value", i);
-        optionTag.textContent = storedPlayersData.players[i];
-        if (storedPlayersData.recentPlayers[1] === storedPlayersData.players[i]) {
-          optionTag.selected = true;
-        }
-        choosePlayerP2.insertBefore(optionTag, choosePlayerP2.lastChild);
-        playersDataExists = true;
+  if (storedPlayersData.players.length > 1) {
+    for (let i = 1; i < storedPlayersData.players.length; i++) {
+      //Update Player1 Selection dropbox
+      let optionTag = document.createElement("option");
+      optionTag.setAttribute("value", i);
+      optionTag.textContent = storedPlayersData.players[i];
+      if (storedPlayersData.recentPlayers[0] === storedPlayersData.players[i]) {
+        optionTag.selected = true;
       }
+      choosePlayerP1.insertBefore(optionTag, choosePlayerP1.lastChild);
+      //Update Player2 Selection dropbox
+      optionTag = document.createElement("option");
+      optionTag.setAttribute("value", i);
+      optionTag.textContent = storedPlayersData.players[i];
+      if (storedPlayersData.recentPlayers[1] === storedPlayersData.players[i]) {
+        optionTag.selected = true;
+      }
+      choosePlayerP2.insertBefore(optionTag, choosePlayerP2.lastChild);
+      playersDataExists = true;
     }
   }
 }
@@ -180,83 +200,48 @@ submit.addEventListener("click", (e) => {
   const typedPlayerP1 = p1InputNew.value;
   const typedPlayerP2 = p2InputNew.value;
 
-  if (!playersDataExists) {
-    let p2avatar = "avatars/avatar0.jpg";
-    if (selectOptionP2 == -3) {
-      p2avatar = "avatars/shakuni.jpeg";
-    }
+  //Update the first player
+  if (selectOptionP1 == -1) {
     const newPlayer = {
-      recentPlayers: [player1, player2],
-      players: [player1, player2],
-      playersData: [
-        {
-          id: 0,
-          name: player1,
-          gamesPlayed: 0,
-          gamesWon: 0,
-          totalScore: 0,
-          gold: 0,
-          diamond: 0,
-          avatar: "avatars/avatar0.jpg",
-        },
-        {
-          id: 1,
-          name: player2,
-          gamesPlayed: 0,
-          gamesWon: 0,
-          totalScore: 0,
-          gold: 0,
-          diamond: 0,
-          avatar: p2avatar,
-        },
-      ],
+      id: storedPlayersData.players.length,
+      name: typedPlayerP1,
+      gamesPlayed: 0,
+      gamesWon: 0,
+      totalScore: 0,
+      gold: 0,
+      diamond: 0,
+      avatar: "/avatars/avatar0.jpg",
+      earnedAvatars: 1,
     };
-    localStorage.setItem("playersDataRaceto100", JSON.stringify(newPlayer));
-    storedPlayersData = JSON.parse(localStorage.getItem("playersDataRaceto100"));
-    //Take Users to Game Page
-    location.assign("game.html");
+    storedPlayersData.recentPlayers[0] = typedPlayerP1;
+    storedPlayersData.players.push(typedPlayerP1);
+    storedPlayersData.playersData.push(newPlayer);
   } else {
-    //Update the first player
-    if (selectOptionP1 == -1) {
-      const newPlayer = {
-        id: storedPlayersData.players.length,
-        name: typedPlayerP1,
-        gamesPlayed: 0,
-        gamesWon: 0,
-        totalScore: 0,
-        gold: 0,
-        diamond: 0,
-        avatar: "/avatars/avatar0.jpg",
-      };
-      storedPlayersData.recentPlayers[0] = typedPlayerP1;
-      storedPlayersData.players.push(typedPlayerP1);
-      storedPlayersData.playersData.push(newPlayer);
-    } else {
-      storedPlayersData.recentPlayers[0] = player1;
-    }
-
-    //Update the second player
-    if (selectOptionP2 == -1) {
-      const newPlayer = {
-        id: storedPlayersData.players.length,
-        name: typedPlayerP2,
-        gamesPlayed: 0,
-        gamesWon: 0,
-        totalScore: 0,
-        gold: 0,
-        diamond: 0,
-        avatar: "avatars/avatar0.jpg",
-      };
-      storedPlayersData.recentPlayers[1] = typedPlayerP2;
-      storedPlayersData.players.push(typedPlayerP2);
-      storedPlayersData.playersData.push(newPlayer);
-    } else {
-      storedPlayersData.recentPlayers[1] = player2;
-    }
-
-    localStorage.setItem("playersDataRaceto100", JSON.stringify(storedPlayersData));
-    //Take Users to Game Page
-    console.log(window.location.href);
-    location.assign("game.html");
+    storedPlayersData.recentPlayers[0] = player1;
   }
+
+  //Update the second player
+  if (selectOptionP2 == -1) {
+    const newPlayer = {
+      id: storedPlayersData.players.length,
+      name: typedPlayerP2,
+      gamesPlayed: 0,
+      gamesWon: 0,
+      totalScore: 0,
+      gold: 0,
+      diamond: 0,
+      avatar: "avatars/avatar0.jpg",
+      earnedAvatars: 1,
+    };
+    storedPlayersData.recentPlayers[1] = typedPlayerP2;
+    storedPlayersData.players.push(typedPlayerP2);
+    storedPlayersData.playersData.push(newPlayer);
+  } else {
+    storedPlayersData.recentPlayers[1] = player2;
+  }
+
+  localStorage.setItem("playersDataRaceto100", JSON.stringify(storedPlayersData));
+  //Take Users to Game Page
+  console.log(window.location.href);
+  location.assign("game.html");
 });

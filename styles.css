@@ -106,6 +106,16 @@ h1 {
   box-shadow: 5px 10px;
 }
 
+.avtr-img-locked {
+  width: 15%;
+  height: auto;
+  margin: 20px;
+  border: #232931 solid;
+  box-shadow: 5px 10px;
+  opacity: 20%;
+  pointer-events: none;
+}
+
 #winner-avatar {
   width: 100px;
   height: 100px;

@@ -89,10 +89,22 @@ const endTheGame = (
     storedPlayersData.playersData[thisIndex].gamesWon += 1;
     storedPlayersData.playersData[thisIndex].totalScore += thisPlayerScore;
     storedPlayersData.playersData[otherIndex].totalScore += loserScore;
-    storedPlayersData.playersData[thisIndex].gold = winnerGoldEarned;
-    storedPlayersData.playersData[thisIndex].diamond = winnerDiamondsEarned;
+    storedPlayersData.playersData[thisIndex].gold = winnerGoldEarned + 10;
+    storedPlayersData.playersData[thisIndex].earnedAvatars += Math.floor(
+      storedPlayersData.playersData[thisIndex].gold / 50
+    );
+    storedPlayersData.playersData[thisIndex].diamond = winnerDiamondsEarned + 1;
+    storedPlayersData.playersData[thisIndex].earnedAvatars += Math.floor(
+      storedPlayersData.playersData[thisIndex].diamond / 5
+    );
     storedPlayersData.playersData[otherIndex].gold = loserGoldEarned;
+    storedPlayersData.playersData[otherIndex].earnedAvatars += Math.floor(
+      storedPlayersData.playersData[otherIndex].gold / 50
+    );
     storedPlayersData.playersData[otherIndex].diamond = loserDiamondsEarned;
+    storedPlayersData.playersData[otherIndex].earnedAvatars += Math.floor(
+      storedPlayersData.playersData[otherIndex].diamond / 5
+    );
     localStorage.setItem("playersDataRaceto100", JSON.stringify(storedPlayersData));
   }
 };
@@ -153,6 +165,9 @@ const playDice = async (
       randomNumber = TARGET - thisPlayerScore;
       pitruAudio.play();
     }
+    if (chance.bool({ likelihood: 15 })) {
+      pitruAudio.play();
+    }
   }
   diceRollAudio.play();
   thisDiceImage.setAttribute("src", "gifs/dice.gif");
@@ -187,9 +202,11 @@ const playDice = async (
         break;
       case 1:
         scoreIncreaser(thisScore, thisPlayerScore - randomNumber, randomNumber);
-        thisGoldEarned -= 1;
-        thisGoldCoin.innerHTML = thisGoldEarned;
-        goldLostAudio.play();
+        if (thisGoldEarned > 0) {
+          thisGoldEarned -= 1;
+          thisGoldCoin.innerHTML = thisGoldEarned;
+          goldLostAudio.play();
+        }
         break;
       case 2:
         scoreIncreaser(thisScore, thisPlayerScore - randomNumber, randomNumber);
