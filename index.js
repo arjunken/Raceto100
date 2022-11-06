@@ -230,7 +230,7 @@ submit.addEventListener("click", (e) => {
       totalScore: 0,
       gold: 0,
       diamond: 0,
-      avatar: "/avatars/avatar0.jpg",
+      avatar: "avatars/avatar0.jpg",
       earnedAvatars: 1,
     };
     storedPlayersData.recentPlayers[0] = typedPlayerP1;
