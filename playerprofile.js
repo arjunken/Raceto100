@@ -10,6 +10,7 @@ const playerUpdateAlert = document.querySelector(".player-update-alert");
 const deletePlayer = document.querySelector(".deletePlayer");
 const deleteCheckBox = document.getElementById("deleteCheckBox");
 const profileContainer = document.querySelector(".profile-container");
+let ROBOT_NAME = "Shakuni-The Robot";
 
 const numberOfAvatars = 44;
 let newAvatar;

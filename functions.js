@@ -149,7 +149,7 @@ const playDice = async (
   winnerScores,
   pitruAudio
 ) => {
-  if (playerX === "Shakuni-The ROBOT") {
+  if (playerX === ROBOT_NAME) {
     thisRollBtn.disabled = true;
     await sleep(1500);
   }
@@ -159,7 +159,7 @@ const playDice = async (
 
   //Dice Code
   let randomNumber = Math.floor(Math.random() * 6 + 1);
-  if (playerX === "Shakuni-The ROBOT") {
+  if (playerX === ROBOT_NAME) {
     randomNumber = chance.weighted([1, 2, 3, 4, 5, 6], SMARTNESS);
     if (chance.bool({ likelihood: SHAKUNI_LASTDICE_CHANCE }) && TARGET - thisPlayerScore <= 6) {
       randomNumber = TARGET - thisPlayerScore;

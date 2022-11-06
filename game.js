@@ -46,16 +46,62 @@ const diamondCoinP2 = document.querySelector("#diamond-coin-p2");
 
 //Global variables
 const TARGET = 100;
+let ROBOT_NAME = "Shakuni-The Robot";
+
 let playerOne = "Player 1";
 let playerTwo = "Player 2";
-const ROBOT_INTEL = [
+const ROBOT_INTEL_CLEVER = [
   [0, 1, 5, 15, 30, 50],
   [2, 3, 5, 10, 40, 40],
   [2, 3, 10, 15, 25, 45],
   [5, 10, 15, 20, 20, 30],
 ];
-const SHAKUNI_LASTDICE_CHANCE = 70;
-const SMARTNESS = ROBOT_INTEL[Math.floor(Math.random() * 4)];
+
+const ROBOT_INTEL_SKILLED = [
+  [15, 15, 30, 20, 10, 10],
+  [13, 12, 20, 25, 15, 15],
+  [10, 20, 20, 20, 20, 10],
+  [5, 10, 15, 30, 20, 20],
+];
+
+const ROBOT_INTEL_NAIVE = [
+  [50, 30, 15, 5, 1, 0],
+  [40, 40, 10, 5, 3, 2],
+  [45, 25, 15, 10, 3, 2],
+  [30, 20, 20, 15, 10, 5],
+];
+
+const storedSmartness = localStorage.getItem("roboSmartnessRaceto100");
+let SHAKUNI_LASTDICE_CHANCE = null;
+let SMARTNESS = null;
+
+switch (storedSmartness) {
+  case "Clever":
+    SHAKUNI_LASTDICE_CHANCE = 70;
+    SMARTNESS = ROBOT_INTEL_CLEVER[Math.floor(Math.random() * 4)];
+    break;
+  case "Skilled":
+    SHAKUNI_LASTDICE_CHANCE = 50;
+    SMARTNESS = ROBOT_INTEL_SKILLED[Math.floor(Math.random() * 4)];
+    break;
+  case "Naive":
+    SHAKUNI_LASTDICE_CHANCE = 30;
+    SMARTNESS = ROBOT_INTEL_NAIVE[Math.floor(Math.random() * 4)];
+    break;
+  default:
+    SHAKUNI_LASTDICE_CHANCE = 50;
+    SMARTNESS = ROBOT_INTEL_SKILLED[Math.floor(Math.random() * 4)];
+}
+
+//Handle Browser Back messups to the form
+window.addEventListener("pageshow", function (event) {
+  var historyTraversal =
+    event.persisted || (typeof window.performance != "undefined" && window.performance.navigation.type === 2);
+  if (historyTraversal) {
+    // Handle page restore.
+    window.location.assign("index.html");
+  }
+});
 
 //Get the current player names
 let storedPlayersData = JSON.parse(localStorage.getItem("playersDataRaceto100"));
@@ -185,7 +231,7 @@ if (storedPlayersData.recentPlayers.length > 0) {
         diamondsEarnedP1 = data[2];
       })
       .then(() => {
-        if (playerTwo === "Shakuni-The ROBOT") {
+        if (playerTwo === ROBOT_NAME) {
           const result = playDice(
             diceRollAudio,
             rollBtn2,

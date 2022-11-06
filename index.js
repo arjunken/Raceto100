@@ -9,22 +9,35 @@ const p1InputNew = document.querySelector(".p1inputnew");
 const p2InputNew = document.querySelector(".p2inputnew");
 const playerAvailabilityCheck = document.querySelector(".player-availability-check");
 const inputValidCheck = document.querySelector(".input-valid-check");
+const gameLevelContainer = document.querySelector(".game-level-container");
 const testInput = /^[a-zA-Z0-9]{3,}$/;
 let player1 = null;
 let player2 = null;
 let playersDataExists = false;
+let ROBOT_NAME = "Shakuni-The Robot";
+
+//Handle Browser Back messups to the form
+window.addEventListener("pageshow", function (event) {
+  var historyTraversal =
+    event.persisted || (typeof window.performance != "undefined" && window.performance.navigation.type === 2);
+  if (historyTraversal) {
+    // Handle page restore.
+    window.location.reload();
+  }
+});
 
 //Get the stored players Data
 let storedPlayersData = JSON.parse(localStorage.getItem("playersDataRaceto100"));
+
 // If Stored Players Data does not exist, initialize Shakuni Robot player first
 if (!storedPlayersData) {
   const newPlayer = {
     recentPlayers: [],
-    players: ["Shakuni-The ROBOT"],
+    players: [ROBOT_NAME],
     playersData: [
       {
         id: 0,
-        name: "Shakuni-The ROBOT",
+        name: ROBOT_NAME,
         gamesPlayed: 0,
         gamesWon: 0,
         totalScore: 0,
@@ -70,6 +83,8 @@ if (choosePlayerP1.options[choosePlayerP1.selectedIndex].value >= 0) {
 if (choosePlayerP2.options[choosePlayerP2.selectedIndex].value >= 0) {
   player2 = choosePlayerP2.options[choosePlayerP2.selectedIndex].text;
 }
+//Hide Game Level Section initially
+gameLevelContainer.classList.add("d-none");
 
 if (player1 && player2 && player1 !== player2) {
   submit.disabled = false;
@@ -100,6 +115,11 @@ choosePlayerP1.addEventListener("change", (e) => {
 });
 
 choosePlayerP2.addEventListener("change", (e) => {
+  if (e.target.value == -3) {
+    gameLevelContainer.classList.remove("d-none");
+  } else {
+    gameLevelContainer.classList.add("d-none");
+  }
   if (e.target.value == -1) {
     p2InputNew.value = "";
     p2InputNew.classList.remove("d-none");
@@ -241,6 +261,7 @@ submit.addEventListener("click", (e) => {
   }
 
   localStorage.setItem("playersDataRaceto100", JSON.stringify(storedPlayersData));
+  localStorage.setItem("roboSmartnessRaceto100", form.gameLevel.value);
   //Take Users to Game Page
   console.log(window.location.href);
   location.assign("game.html");

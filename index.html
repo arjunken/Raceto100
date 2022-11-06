@@ -43,13 +43,46 @@
           <select class="form-select rounded-0" id="choose-player-p2">
             <option value="-2" selected>Select Player 2</option>
             <option value="-1">New Player</option>
-            <option value="-3">Shakuni-The ROBOT</option>
+            <option value="-3">Shakuni-The Robot</option>
           </select>
 
           <input type="text" class="form-control d-none p2inputnew" name="p2inputnew" placeholder="New Player Name" />
         </div>
+        <div class="game-level-container">
+          <p>Choose Shakuni's Smartness</p>
+          <div class="d-flex flex-row gap-2 mb-4">
+            <input
+              type="radio"
+              class="btn-check form-control"
+              name="gameLevel"
+              id="naive"
+              autocomplete="off"
+              value="Naive"
+            />
+            <label class="btn btn-outline-secondary" for="naive">Naive</label>
+            <input
+              type="radio"
+              class="btn-check form-control"
+              name="gameLevel"
+              id="skilled"
+              autocomplete="off"
+              value="Skilled"
+            />
+            <label class="btn btn-outline-secondary" for="skilled">Equally Skilled</label>
+            <input
+              type="radio"
+              class="btn-check form-control"
+              name="gameLevel"
+              id="clever"
+              autocomplete="off"
+              value="Clever"
+              checked
+            />
+            <label class="btn btn-outline-secondary" for="clever">Clever</label>
+          </div>
+        </div>
 
-        <div class="col-12 text-center">
+        <div class="text-center mt-2">
           <button type="submit" class="btn btn-primary mb-2" id="btnDataFromUser" disabled>Let's go!</button>
         </div>
         <p class="formvalidation alert alert-warning d-none">Names can't be same. Try again!</p>
@@ -59,7 +92,7 @@
         </p>
       </form>
     </div>
-
+    <script src="./functions.js"></script>
     <script src="index.js"></script>
   </body>
 

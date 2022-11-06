@@ -2,6 +2,7 @@
 const playagainBtn = document.querySelector("#playagain-btn");
 const newGameBtn = document.querySelector("#newgame-btn");
 const editProfileBtn = document.querySelector("#editprofile-btn");
+let ROBOT_NAME = "Shakuni-The Robot";
 
 let playersData = [];
 
