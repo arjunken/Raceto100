@@ -3,7 +3,7 @@
 #userInputs {
   background-color:azure; 
   padding: 10px; 
-  width: 40%;
+  width: auto;
   margin: auto;
 } 
 
@@ -183,10 +183,10 @@ footer {
 
 /* Media Based Styling */
 
-@media (max-width: 760px) { 
+@media (min-width: 1260px) { 
 
   #userInputs {  
-  width: 100%;
+  width: 40%;
 } 
 
 .profileDetails{
