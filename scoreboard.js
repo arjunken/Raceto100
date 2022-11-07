@@ -51,6 +51,14 @@ const table = new Tabulator("#score-board", {
   ],
 });
 
+table.on("rowDblClick", function (e, row) {
+  if (e.target.innerText === "Shakuni-The Robot") {
+    location.assign("playerprofiles.html");
+  } else {
+    location.assign(`playerprofiles.html?player=${e.target.innerText}`);
+  }
+});
+
 playagainBtn.addEventListener("click", () => {
   location.assign("game.html");
 });

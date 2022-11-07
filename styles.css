@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Bungee+Shade&family=Fuzzy+Bubbles:wght@400;700&display=swap');
 
 #userInputs {
   background-color:azure; 
@@ -11,11 +11,12 @@ body {
   background-color:#232931;
   background-image: url('gifs/stars.gif');
   background-repeat: repeat;
+  font-family: 'Fuzzy Bubbles', cursive;
 }
 
 h1 {
   margin: 30px;
-  font-family: 'Lobster', cursive;
+  font-family:'Bubblegum Sans', cursive;
   text-shadow: 5px 0 #232931;
   font-size: 7rem;
   color: #4ECCA3;
@@ -24,7 +25,9 @@ h1 {
 
 #player1-card, #player2-card {
  font-weight: 600;
- font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+ font-family: 'Fuzzy Bubbles', cursive;
+ font-size: larger;
+ color:black
 }
 
 .player1-pointer, .player2-pointer{

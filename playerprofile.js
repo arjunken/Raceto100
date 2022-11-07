@@ -20,13 +20,23 @@ let ROBOT_NAME = "Shakuni-The Robot";
 const numberOfAvatars = 44;
 let newAvatar;
 let newPlayerName;
-let selectedPlayerIndex = 1;
 let deletePlayerList = [];
+let selectedPlayerIndex = 1;
 
 //Get the Players Data
 let storedPlayersData = JSON.parse(localStorage.getItem("playersDataRaceto100"));
 
 if (storedPlayersData) {
+  //Get the URL Query string if available
+  const params = new Proxy(new URLSearchParams(window.location.search), {
+    get: (searchParams, prop) => searchParams.get(prop),
+  });
+
+  for (let i = 1; i < storedPlayersData.players.length; i++) {
+    if (storedPlayersData.players[i] === params.player) {
+      selectedPlayerIndex = i;
+    }
+  }
   for (let i = 1; i <= numberOfAvatars; i++) {
     const avatarImgTag = document.createElement("img");
     if (i <= storedPlayersData.playersData[selectedPlayerIndex].earnedAvatars) {
@@ -52,14 +62,17 @@ if (storedPlayersData) {
     const optionTag = document.createElement("option");
     optionTag.value = storedPlayersData.playersData[i].avatar;
     optionTag.textContent = storedPlayersData.players[i];
+    if (i === selectedPlayerIndex) {
+      optionTag.selected = true;
+    }
     playerSelection.append(optionTag);
   }
 
-  playerInEdit.src = storedPlayersData.playersData[1].avatar;
-  playerName.value = storedPlayersData.playersData[1].name;
-  let curPlayerName = storedPlayersData.playersData[1].name;
-  newPlayerName = storedPlayersData.playersData[1].name;
-  newAvatar = storedPlayersData.playersData[1].avatar;
+  playerInEdit.src = storedPlayersData.playersData[selectedPlayerIndex].avatar;
+  playerName.value = storedPlayersData.playersData[selectedPlayerIndex].name;
+  let curPlayerName = storedPlayersData.playersData[selectedPlayerIndex].name;
+  newPlayerName = storedPlayersData.playersData[selectedPlayerIndex].name;
+  newAvatar = storedPlayersData.playersData[selectedPlayerIndex].avatar;
 
   playerSelection.addEventListener("change", (e) => {
     playerInEdit.src = storedPlayersData.playersData[e.target.selectedIndex + 1].avatar;
