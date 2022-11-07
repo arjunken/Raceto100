@@ -47,7 +47,7 @@ const goldCoinP2 = document.querySelector("#gold-coin-p2");
 const diamondCoinP2 = document.querySelector("#diamond-coin-p2");
 
 //Global variables
-const TARGET = 25;
+const TARGET = 100;
 let ROBOT_NAME = "Shakuni-The Robot";
 
 let playerOne = "Player 1";

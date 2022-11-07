@@ -25,8 +25,8 @@ const table = new Tabulator("#score-board", {
   movableColumns: true,
   paginationCounter: "rows",
   initialSort: [
-    { column: "totalScore", dir: "desc" }, //sort by this first
-    { column: "gamesWon", dir: "desc" }, //then sort by this second
+    { column: "gamesWon", dir: "desc" },
+    { column: "totalScore", dir: "desc" },
   ],
   columns: [
     //Define Table Columns
