@@ -19,6 +19,8 @@ const diamondsCollectAudio = document.getElementById("diamonds-collect-audio");
 const pitruAudio = document.getElementById("pitru-audio");
 const npcNumbers = document.querySelector(".npc-numbers");
 const rapContainer = document.querySelector(".rap-container");
+const earnedGoldDisplay = document.getElementById("earned-gold-display");
+const earnedDiamondDisplay = document.getElementById("earned-diamond-display");
 //Player1 variables
 const p1Score = document.querySelector("#score-p1");
 const p1CardTitle = document.querySelector("#player1-card");
@@ -45,7 +47,7 @@ const goldCoinP2 = document.querySelector("#gold-coin-p2");
 const diamondCoinP2 = document.querySelector("#diamond-coin-p2");
 
 //Global variables
-const TARGET = 100;
+const TARGET = 25;
 let ROBOT_NAME = "Shakuni-The Robot";
 
 let playerOne = "Player 1";
@@ -221,7 +223,9 @@ if (storedPlayersData.recentPlayers.length > 0) {
       winnerDisplayName,
       storedPlayersData,
       winnerScores,
-      pitruAudio
+      pitruAudio,
+      earnedGoldDisplay,
+      earnedDiamondDisplay
     );
 
     result
@@ -269,7 +273,9 @@ if (storedPlayersData.recentPlayers.length > 0) {
             winnerDisplayName,
             storedPlayersData,
             winnerScores,
-            pitruAudio
+            pitruAudio,
+            earnedGoldDisplay,
+            earnedDiamondDisplay
           );
 
           result
@@ -327,7 +333,9 @@ if (storedPlayersData.recentPlayers.length > 0) {
       winnerDisplayName,
       storedPlayersData,
       winnerScores,
-      pitruAudio
+      pitruAudio,
+      earnedGoldDisplay,
+      earnedDiamondDisplay
     );
 
     result

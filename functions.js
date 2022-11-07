@@ -60,7 +60,11 @@ const endTheGame = (
   winnerDisplayName,
   storedPlayersData,
   randomNumber,
-  winnerScores
+  winnerScores,
+  earnedGoldDisplay,
+  earnedDiamondDisplay,
+  lastGoldEarned,
+  lastDiamondsEarned
 ) => {
   thisRollBtn.disabled = true;
   otherRollBtn.disabled = true;
@@ -105,6 +109,10 @@ const endTheGame = (
     storedPlayersData.playersData[otherIndex].earnedAvatars += Math.floor(
       storedPlayersData.playersData[otherIndex].diamond / 5
     );
+    earnedGoldDisplay.innerHTML = `Mined ${storedPlayersData.playersData[thisIndex].gold - lastGoldEarned} Gold Coins`;
+    earnedDiamondDisplay.innerHTML = `Mined ${
+      storedPlayersData.playersData[thisIndex].diamond - lastDiamondsEarned
+    } Diamonds`;
     localStorage.setItem("playersDataRaceto100", JSON.stringify(storedPlayersData));
   }
 };
@@ -147,7 +155,9 @@ const playDice = async (
   winnerDisplayName,
   storedPlayersData,
   winnerScores,
-  pitruAudio
+  pitruAudio,
+  earnedGoldDisplay,
+  earnedDiamondDisplay
 ) => {
   if (playerX === ROBOT_NAME) {
     thisRollBtn.disabled = true;
@@ -190,7 +200,8 @@ const playDice = async (
   }
 
   //Add or reduce rewards for the player 1
-
+  const lastGoldEarned = thisGoldEarned;
+  const lastDiamondsEarned = thisDiamondsEarned;
   if (randomNumberArray.includes(thisPlayerScore)) {
     let idx = randomNumberArray.indexOf(thisPlayerScore);
     switch (npcArray[idx]) {
@@ -246,7 +257,11 @@ const playDice = async (
       winnerDisplayName,
       storedPlayersData,
       randomNumber,
-      winnerScores
+      winnerScores,
+      earnedGoldDisplay,
+      earnedDiamondDisplay,
+      lastGoldEarned,
+      lastDiamondsEarned
     );
     throw new Error("Congratulations!");
   } else {

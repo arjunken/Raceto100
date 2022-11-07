@@ -39,7 +39,7 @@
         class="container d-flex flex-column flex-md-row gap-3 justify-content-center align-items-top profile-container"
       >
         <div class="profileDetails bg-light text-center rounded-2 d-flex flex-column align-items-center">
-          <img src="./avatars/avatar2.jpg" alt="" class="player-in-edit m-2 w-75 rounded-pill" />
+          <img src="avatars/avatar0.jpg" alt="" class="player-in-edit m-2 rounded-pill" />
           <select class="form-select m-2 w-75" aria-label="player-selection" id="player-selection">
           </select>  
           <div class="d-inline-flex align-items-center flex-row gap-2 w-75">              
@@ -57,10 +57,39 @@
             <label class="form-check-label alert alert-warning" for="deleteCheckBox">
               This player will be deleted when you click on Done. Uncheck to undo.
             </label>
-          </div>            
+          </div>  
+          <table class="table w-75 text-start">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Player Stats</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="playerStats_gamesPlayed">
+                <td>Games Played</td>                
+              </tr>
+              <tr id="playerStats_gamesWon">
+                <td>Games Won</td>
+              </tr>
+              <tr id="playerStats_goldMined">
+                <td>Golds Mined</td>
+              </tr>
+              <tr id="playerStats_diamondsMined">
+                <td>Diamonds Mined</td>
+              </tr>  
+              <tr id="playerStats_totalScore">
+                <td>Total Score</td>
+              </tr>               
+             </tbody>
+          </table>
+
         </div>       
 
         </form>
+        
+
+
         <div class="avatarListContainer bg-light rounded-2 d-flex flex-column">
           <h6 class="m-4 text-center"> Choose your avatar - Get 5 Diamonds to unlock the next</h6>
           <div class="avatarList mx-4 d-flex flex-row flex-wrap justify-content-between"></div>

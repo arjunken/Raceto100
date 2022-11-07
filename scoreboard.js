@@ -15,7 +15,7 @@ if (localStorage.getItem("playersDataRaceto100")) {
 }
 
 //create Tabulator on DOM element with id "score-board"
-var table = new Tabulator("#score-board", {
+const table = new Tabulator("#score-board", {
   data: playersData, //assign data to table
   layout: "fitDataFill", //fit columns to width of table (optional)
   responsiveLayout: true,

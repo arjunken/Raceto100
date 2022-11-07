@@ -10,6 +10,11 @@ const playerUpdateAlert = document.querySelector(".player-update-alert");
 const deletePlayer = document.querySelector(".deletePlayer");
 const deleteCheckBox = document.getElementById("deleteCheckBox");
 const profileContainer = document.querySelector(".profile-container");
+const playerStats_gamesPlayed = document.getElementById("playerStats_gamesPlayed");
+const playerStats_gamesWon = document.getElementById("playerStats_gamesWon");
+const playerStats_goldMined = document.getElementById("playerStats_goldMined");
+const playerStats_diamondsMined = document.getElementById("playerStats_diamondsMined");
+const playerStats_totalScore = document.getElementById("playerStats_totalScore");
 let ROBOT_NAME = "Shakuni-The Robot";
 
 const numberOfAvatars = 44;
@@ -134,6 +139,28 @@ if (storedPlayersData) {
     }
     location.assign("scoreboard.html");
   });
+
+  //Display Player Statistics
+  const playerEarnings = [
+    storedPlayersData.playersData[selectedPlayerIndex].gamesPlayed,
+    storedPlayersData.playersData[selectedPlayerIndex].gamesWon,
+    storedPlayersData.playersData[selectedPlayerIndex].gold,
+    storedPlayersData.playersData[selectedPlayerIndex].diamond,
+    storedPlayersData.playersData[selectedPlayerIndex].totalScore,
+  ];
+
+  const trElements = [
+    playerStats_gamesPlayed,
+    playerStats_gamesWon,
+    playerStats_goldMined,
+    playerStats_diamondsMined,
+    playerStats_totalScore,
+  ];
+  for (let i = 0; i < 5; i++) {
+    const tdElement = document.createElement("td");
+    tdElement.innerHTML = playerEarnings[i];
+    trElements[i].append(tdElement);
+  }
 } else {
   profileContainer.innerHTML = "No Players to Edit. Start a new game.";
   setTimeout(() => {

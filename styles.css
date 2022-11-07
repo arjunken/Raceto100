@@ -77,6 +77,17 @@ h1 {
   color: white;    
   }  
 
+  .earnings-display{
+    font-size: 1.3rem;
+    width: 70%;
+    height: auto;
+  }
+
+  .earnings-display img{
+    width: 40%;
+    height: auto;
+  }
+
   .winner-display span{
     font-family: 'Bungee Shade', cursive;
   }
@@ -181,6 +192,11 @@ footer {
   width: 15%;
 }
 
+.player-in-edit{
+  width: 40%;
+  height: auto;
+}
+
 /* Media Based Styling */
 
 @media (min-width: 1260px) { 
@@ -190,7 +206,7 @@ footer {
 } 
 
 .profileDetails{
-  width: 100%;
+  width: 50%;
 }
 
 .avatarListContainer{

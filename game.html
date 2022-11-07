@@ -120,12 +120,10 @@
           class="npc-numbers card-body d-flex flex-row justify-content-center flex-wrap gap-3 align-items-center"
         ></div>
         <div class="card-footer d-blck d-flex flex-column flex-lg-row justify-content-center">
-          <div class="stars-desc my-1 p-3"><span class="nitro">#</span>&ensp; +2 Gold Coin</div>
-          <div class="stars-desc my-1 p-3"><span class="pitstop">#</span>&ensp; -1 Gold Coin</div>
-          <div class="stars-desc my-1 p-3"><span class="crash">#</span>&ensp; +1 Diamond Coin (10x Gold)</div>
-          <div class="stars-desc my-1 p-3">
-            <span class="crash"></span>&ensp; +10 Gold, +1 Diamond Coins for Winners
-          </div>
+          <div class="stars-desc my-1 p-3"><span class="nitro">#</span>&ensp; Mine 2 Gold Coin</div>
+          <div class="stars-desc my-1 p-3"><span class="pitstop">#</span>&ensp; Lose 1 Gold Coin</div>
+          <div class="stars-desc my-1 p-3"><span class="crash">#</span>&ensp; Mine 1 Diamond Coin</div>
+          <div class="stars-desc my-1 p-3"><span class="crash"></span>&ensp; Winners Mine 10 Gold and 1 Diamond</div>
         </div>
       </div>
       <!-- Winners Display -->
@@ -139,6 +137,16 @@
         <img src="" id="winner-avatar" />
         <span></span>
         <p class="display-5 scores">Scores</p>
+        <div class="d-flex flex-row justify-content-around text-center earnings-display p-3 gap-3">
+          <div class="gold-earned">
+            <img src="images/coin2.png" alt="" />
+            <p id="earned-gold-display"></p>
+          </div>
+          <div class="diamond-earned">
+            <img src="images/diamond2.png" alt="" />
+            <p id="earned-diamond-display"></p>
+          </div>
+        </div>
         <!-- <img src="./gifs/dance1.gif" alt="dancer" class="dancer1 w-25" />
         <img src="./gifs/dance1.gif" alt="dancer" class="dancer2 w-25" /> -->
       </div>
