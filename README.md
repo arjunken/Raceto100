@@ -6,13 +6,33 @@ A Dice Game for Kids. Very simple and enjoyable trivia game that is built comple
 ![Image1](/images/raceto100-3.png)
 ![Image1](/images/raceto100-4.png)
 
-## Who is this game for?
+## Target Audience
 
 This game was built for kids. But, generally anyone likes to play trivia games can try. It's a way to relieve your stress and have fun with your kids.
 
 ## How does it work?
 
 Currently, this game can only be played on one device sharing controls with other players. It is best presented on laptops, tablets and desktop computers. In the future, I might introduce a better version to play the game remotely using another device.
+
+### Shakuni - The Robot
+
+If you have no one to play, the game presents a robot player called "Shakuni". Shakuni is a mythological character derived from the Hindu epic "Mahabharata", wherein, Shakuni is mastermind behind a dice game that leads Pandavas and Kauravas go for a epical war. In this game, the player Shakuni has been configured to play in three levels which is from naive to clever. You can choose your level and play with him.
+
+### Last Dice
+
+Note that the last dice has to match with the number you need to hit the target. For example, if you are on 95 and need 5 more point to reach 100, you must get 5 or less to move forward. A six point dice will not make you reach 100.
+
+### Minding Gold and Diamonds
+
+The game is designed such a way that you mine gold and diamond coins as you race. The gold and diamond coins will be added when your Total Score lands on the magical numbers that are associated with Gold and Diamond. Landing on some numbers will also grab them off from your bucket. If your audio is on, you will hear sounds of coin collection and loss. Winning a game means, you earn 10 Golds and 1 Diamond from the mining authority. Remaining ones, you should mine.
+
+### Scoreboard
+
+The game has a scoreboard that you can access when you complete a game. It maintains the scores, gold, diamonds data of all the players. It also provides a glimpse of how many games each player has played so far and how many of them the player has won. Double-clicking on each row will take you to the corresponding player's profile.
+
+### Player Profiles
+
+The games provides a way to customize your avatar and view game assets. When you get started with the game, you will gain access to use 1 avatar. As you earn more gold and diamond, remaining avatars will be unlocked automatically. Try checking the profiles page after you earn 5 diamonds or 50 gold coins.
 
 ## How to get started?
 
