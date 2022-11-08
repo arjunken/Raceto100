@@ -1,10 +1,6 @@
 # Raceto100
 
 A Dice Game for Kids. Very simple and enjoyable trivia game that is built completely out of Javascript and using [ChanceJS] (https://chancejs.com/index.html) for randomn number generation and [Tabulator] (https://tabulator.info/) for presenting scores in a nicely formatted table.
-![Image1](/images/raceto100-1.png)
-![Image1](/images/raceto100-2.png)
-![Image1](/images/raceto100-3.png)
-![Image1](/images/raceto100-4.png)
 
 ## Target Audience
 
@@ -49,3 +45,11 @@ There are 4 ways to get started:
 I would like to see if people are liking this trivia game. If you like it, please "star" this repository or fork it to customize.
 
 ## ENJOY!!
+
+## Screenshots
+
+![Image1](/images/raceto100-1.png)
+![Image1](/images/raceto100-2.png)
+![Image1](/images/raceto100-3.png)
+![Image1](/images/raceto100-4.png)
+![Image1](/images/raceto100-5.png)
