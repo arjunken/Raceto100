@@ -7,6 +7,7 @@ const deleteBtn = document.querySelector("#delete-btn");
 const playerSelection = document.querySelector("#player-selection");
 const playerName = document.getElementById("playerName");
 const playerUpdateAlert = document.querySelector(".player-update-alert");
+const rewardChangeAlert = document.querySelector(".reward-change-alert");
 const deletePlayer = document.querySelector(".deletePlayer");
 const deleteCheckBox = document.getElementById("deleteCheckBox");
 const profileContainer = document.querySelector(".profile-container");
@@ -16,8 +17,8 @@ const playerStats_goldMined = document.getElementById("playerStats_goldMined");
 const playerStats_diamondsMined = document.getElementById("playerStats_diamondsMined");
 const playerStats_totalScore = document.getElementById("playerStats_totalScore");
 let ROBOT_NAME = "Shakuni-The Robot";
+const TOTAL_AVATARS = 44;
 
-const numberOfAvatars = 44;
 let newAvatar;
 let newPlayerName;
 let deletePlayerList = [];
@@ -37,7 +38,7 @@ if (storedPlayersData) {
       selectedPlayerIndex = i;
     }
   }
-  for (let i = 1; i <= numberOfAvatars; i++) {
+  for (let i = 1; i <= TOTAL_AVATARS; i++) {
     const avatarImgTag = document.createElement("img");
     if (i <= storedPlayersData.playersData[selectedPlayerIndex].earnedAvatars) {
       avatarImgTag.classList.add("avtr-img");
@@ -55,6 +56,16 @@ if (storedPlayersData) {
     if (e.target.tagName === "IMG") {
       playerInEdit.src = e.target.src;
       newAvatar = e.path[0].attributes.src.value;
+      if (
+        storedPlayersData.playersData[selectedPlayerIndex].avatarsOnSale.includes(
+          parseInt(newAvatar.replace(/[^0-9]/g, ""))
+        )
+      ) {
+        rewardChangeAlert.classList.remove("d-none");
+        console.log("Working");
+      } else {
+        rewardChangeAlert.classList.add("d-none");
+      }
     }
   });
 
@@ -86,7 +97,7 @@ if (storedPlayersData) {
       deleteCheckBox.checked = true;
     }
     avatarList.innerHTML = "";
-    for (let i = 1; i <= numberOfAvatars; i++) {
+    for (let i = 1; i <= TOTAL_AVATARS; i++) {
       const avatarImgTag = document.createElement("img");
       if (i <= storedPlayersData.playersData[selectedPlayerIndex].earnedAvatars) {
         avatarImgTag.classList.add("avtr-img");
@@ -112,11 +123,21 @@ if (storedPlayersData) {
     storedPlayersData.players[selectedPlayerIndex] = newPlayerName;
     storedPlayersData.playersData[selectedPlayerIndex].name = newPlayerName;
     storedPlayersData.playersData[selectedPlayerIndex].avatar = newAvatar;
+    if (
+      storedPlayersData.playersData[selectedPlayerIndex].avatarsOnSale.includes(
+        parseInt(newAvatar.replace(/[^0-9]/g, ""))
+      )
+    ) {
+      storedPlayersData.playersData[selectedPlayerIndex].gold >= 50
+        ? (storedPlayersData.playersData[selectedPlayerIndex].gold -= 50)
+        : (storedPlayersData.playersData[selectedPlayerIndex].diamond -= 5);
+    }
     localStorage.setItem("playersDataRaceto100", JSON.stringify(storedPlayersData));
     playerUpdateAlert.classList.remove("d-none");
     setTimeout(() => {
       playerUpdateAlert.classList.add("d-none");
     }, 1000);
+    location.reload();
   });
 
   deleteBtn.addEventListener("click", () => {

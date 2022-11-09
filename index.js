@@ -15,6 +15,12 @@ let player1 = null;
 let player2 = null;
 let playersDataExists = false;
 let ROBOT_NAME = "Shakuni-The Robot";
+const TOTAL_AVATARS = 44;
+let avatarsOnSale = [];
+
+for (let i = 2; i < TOTAL_AVATARS; i++) {
+  avatarsOnSale.push(i);
+}
 
 //Handle Browser Back messups to the form
 window.addEventListener("pageshow", function (event) {
@@ -45,6 +51,7 @@ if (!storedPlayersData) {
         diamond: 0,
         avatar: "avatars/shakuni.jpeg",
         earnedAvatars: 1,
+        avatarsOnSale: avatarsOnSale,
       },
     ],
   };
@@ -232,6 +239,7 @@ submit.addEventListener("click", (e) => {
       diamond: 0,
       avatar: "avatars/avatar0.jpg",
       earnedAvatars: 1,
+      avatarsOnSale: avatarsOnSale,
     };
     storedPlayersData.recentPlayers[0] = typedPlayerP1;
     storedPlayersData.players.push(typedPlayerP1);
@@ -252,6 +260,7 @@ submit.addEventListener("click", (e) => {
       diamond: 0,
       avatar: "avatars/avatar0.jpg",
       earnedAvatars: 1,
+      avatarsOnSale: avatarsOnSale,
     };
     storedPlayersData.recentPlayers[1] = typedPlayerP2;
     storedPlayersData.players.push(typedPlayerP2);
