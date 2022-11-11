@@ -14,6 +14,7 @@ const testInput = /^[a-zA-Z0-9]{3,}$/;
 let player1 = null;
 let player2 = null;
 let playersDataExists = false;
+let GAME_VERSION = 1.0;
 let ROBOT_NAME = "Shakuni-The Robot";
 const TOTAL_AVATARS = 44;
 let avatarsOnSale = [];
@@ -35,6 +36,13 @@ window.addEventListener("pageshow", function (event) {
 //Get the stored players Data
 let storedPlayersData = JSON.parse(localStorage.getItem("playersDataRaceto100"));
 
+//Check the version of localstorage data saved and updates schema
+if (storedPlayersData && (!storedPlayersData.gameVersion || storedPlayersData.gameVersion !== GAME_VERSION)) {
+  storedPlayersData = JSON.parse(localStorage.getItem("playersDataRaceto100"));
+  storedPlayersData.gameVersion = GAME_VERSION;
+  localStorage.setItem("playersDataRaceto100", JSON.stringify(storedPlayersData));
+}
+
 // If Stored Players Data does not exist, initialize Shakuni Robot player first
 if (!storedPlayersData) {
   const newPlayer = {
@@ -54,6 +62,7 @@ if (!storedPlayersData) {
         avatarsOnSale: avatarsOnSale,
       },
     ],
+    gameVersion: GAME_VERSION,
   };
   localStorage.setItem("playersDataRaceto100", JSON.stringify(newPlayer));
   storedPlayersData = JSON.parse(localStorage.getItem("playersDataRaceto100"));
