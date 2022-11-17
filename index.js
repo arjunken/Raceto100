@@ -150,7 +150,7 @@ choosePlayerP2.addEventListener("change", (e) => {
     playerAvailabilityCheck.classList.add("d-none");
     inputValidCheck.classList.add("d-none");
   }
-  if (player1 && player2) {
+  if (player1 !== player2) {
     submit.disabled = false;
   } else {
     submit.disabled = true;
