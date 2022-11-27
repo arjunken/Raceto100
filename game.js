@@ -47,7 +47,7 @@ const goldCoinP2 = document.querySelector("#gold-coin-p2");
 const diamondCoinP2 = document.querySelector("#diamond-coin-p2");
 
 //Global variables
-const TARGET = 100;
+const TARGET = 50;
 let ROBOT_NAME = "Shakuni-The Robot";
 
 let playerOne = "Player 1";
@@ -125,10 +125,10 @@ if (storedPlayersData.recentPlayers.length > 0) {
   p2CardTitle.innerHTML = playerTwo;
   let player1Score = 0;
   let player2Score = 0;
-  let goldEarnedP1 = storedPlayersData.playersData[p1Index].gold;
-  let diamondsEarnedP1 = storedPlayersData.playersData[p1Index].diamond;
-  let goldEarnedP2 = storedPlayersData.playersData[p2Index].gold;
-  let diamondsEarnedP2 = storedPlayersData.playersData[p2Index].diamond;
+  let goldEarnedP1 = 0;
+  let diamondsEarnedP1 = 0;
+  let goldEarnedP2 = 0;
+  let diamondsEarnedP2 = 0;
 
   //Display relevant profile pics
   p1ProfilePic.src = storedPlayersData.playersData[p1Index].avatar;
