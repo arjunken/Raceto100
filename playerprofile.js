@@ -110,6 +110,28 @@ if (storedPlayersData) {
       avatarImgTag.src = `avatars/avatar${i}.jpg`;
       avatarList.append(avatarImgTag);
     }
+
+    //Display Player Statistics
+    const playerEarnings = [
+      storedPlayersData.playersData[selectedPlayerIndex].gamesPlayed,
+      storedPlayersData.playersData[selectedPlayerIndex].gamesWon,
+      storedPlayersData.playersData[selectedPlayerIndex].gold,
+      storedPlayersData.playersData[selectedPlayerIndex].diamond,
+      storedPlayersData.playersData[selectedPlayerIndex].totalScore,
+    ];
+
+    const trElements = [
+      playerStats_gamesPlayed,
+      playerStats_gamesWon,
+      playerStats_goldMined,
+      playerStats_diamondsMined,
+      playerStats_totalScore,
+    ];
+    for (let i = 0; i < 5; i++) {
+      const tdElement = document.createElement("td");
+      tdElement.innerHTML = playerEarnings[i];
+      trElements[i].replaceChild(tdElement, trElements[i].lastChild);
+    }
   });
 
   playerName.addEventListener("change", (e) => {
