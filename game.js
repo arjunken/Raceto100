@@ -185,7 +185,8 @@ if (storedPlayersData.recentPlayers.length > 0) {
   }
   //When Player One clicks the roll button
 
-  rollBtn1.addEventListener("click", (e) => {
+  //Function to rollBtn1
+  function rollbutton1() {
     const result = playDice(
       diceRollAudio,
       rollBtn1,
@@ -292,10 +293,21 @@ if (storedPlayersData.recentPlayers.length > 0) {
       .catch((err) => {
         console.log(err.message);
       });
+  }
+
+  window.addEventListener("keypress", (e) => {
+    if (e.code === "KeyA" && rollBtn1.disabled == false) {
+      rollbutton1();
+    }
+  });
+
+  rollBtn1.addEventListener("click", (e) => {
+    rollbutton1();
   });
 
   //When Player Two clicks the roll button
-  rollBtn2.addEventListener("click", (e) => {
+  //Function
+  function rollbutton2() {
     const result = playDice(
       diceRollAudio,
       rollBtn2,
@@ -347,6 +359,16 @@ if (storedPlayersData.recentPlayers.length > 0) {
       .catch((err) => {
         console.log(err.message);
       });
+  }
+
+  window.addEventListener("keypress", (e) => {
+    if (e.code === "KeyL" && rollBtn2.disabled == false) {
+      rollbutton2();
+    }
+  });
+
+  rollBtn2.addEventListener("click", (e) => {
+    rollbutton2();
   });
 
   playagainBtn.addEventListener("click", () => {
